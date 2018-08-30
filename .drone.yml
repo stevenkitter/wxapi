@@ -11,7 +11,8 @@ pipeline:
     image: plugins/docker
     repo: coderxu/wxapi_auth
     target: production
-    secrets: [ coderxu, wangxu226 ]
+    username: coderxu
+    password: wangxu226
     dockerfile: ./auth/Dockerfile
 
 
