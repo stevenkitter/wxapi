@@ -31,7 +31,7 @@ pipeline:
     agent_id: 1000002
     to_tag: 1
     safe: 1
-    btn_txt: more
+    btn_txt: more_text
     title: ${DRONE_REPO_NAME}
     message: >
       {%if success %}
