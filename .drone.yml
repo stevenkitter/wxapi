@@ -19,7 +19,7 @@ pipeline:
     host: 45.76.96.204
     username: root
     password: k4W)YTgK1w,(mVZC
-    port: 4430
+    port: 22
     target: /root/wxapi/auth
     source: ./auth/docker-compose.yml
 
