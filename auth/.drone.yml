@@ -1,0 +1,14 @@
+workspace:
+  base: /root/wxapi
+  path: /auth
+
+pipeline:
+  backend:
+    image: golang
+    commands:
+      - go get
+      - go build
+      - go test
+
+branches: master
+
