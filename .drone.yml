@@ -22,6 +22,19 @@ pipeline:
     port: 22
     script:
       - sudo docker run --name wxapi_auth -p 8021:8021 -d coderxu/wxapi_auth
-      
-
+  wechat:
+    image: lizheming/drone-wechat
+    corpid: ww4854a2c3aaec98f9
+    corp_secret: -mPkllfoA6xjpsrHpvr3_bxp3yV9HYkiz2l5SxvkRaM 
+    agent_id: 1000002
+    to_tag: 1
+    safe: 1
+    btn_txt: more
+    title: ${DRONE_REPO_NAME}
+    message: >
+      {%if success %}
+        build {{build.number}} succeeded. Good job.
+      {% else %}
+        build {{build.number}} failed. Fix me please.
+      {% endif %}
 
