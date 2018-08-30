@@ -21,6 +21,8 @@ pipeline:
     password: k4W)YTgK1w,(mVZC
     port: 22
     script:
+      - sudo docker pull coderxu/wxapi_auth
+      - sudo docker rm -f wxapi_auth
       - sudo docker run --name wxapi_auth -p 8021:8021 -d coderxu/wxapi_auth
   wechat:
     image: lizheming/drone-wechat
@@ -37,4 +39,6 @@ pipeline:
       {% else %}
         build {{build.number}} failed. Fix me please.
       {% endif %}
+    when:
+      status: [success,failure]
 
