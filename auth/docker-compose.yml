@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  wxapi_auth:
+    image: coderxu/wxapi_auth
+    networks:
+      - internal
+
+networks: 
+  internal:
+    external: true
