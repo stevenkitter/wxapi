@@ -43,7 +43,7 @@ pipeline:
     to_tag: 1
     msg_url: ${DRONE_BUILD_LINK}
     safe: 0
-    btn_txt: more
+    btn_txt: ok
     title: ${DRONE_REPO_NAME}
     message: >
       {%if success %}
