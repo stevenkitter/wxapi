@@ -31,7 +31,7 @@ pipeline:
     agent_id: 1000002
     to_user: WangXu
     safe: 1
-    btn_txt: more_text
+    btn_txt: more
     title: ${DRONE_REPO_NAME}
     message: >
       {%if success %}
