@@ -1,13 +1,13 @@
 workspace:
-  base: /root/wxapi
-  path: /auth
+  base: /root
+  path: /wxapi
 
 pipeline:
   backend:
     image: golang
     commands:
-      - go get
-      - go build
-      - go test
+      - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app ./auth
+      - ./app
+      
 
 
