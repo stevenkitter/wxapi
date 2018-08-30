@@ -4,16 +4,20 @@ workspace:
 
 pipeline:
   apis:
+    group: build
     image: golang
     commands:
       - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o ./auth/app ./auth
+
   docker_auth:
     image: plugins/docker
     repo: coderxu/wxapi_auth
     target: production
     secrets: [docker_username,docker_password]
     dockerfile: ./auth/Dockerfile
+
   scp_compose_yml:
+    group: build
     image: appleboy/drone-scp
     host: 45.76.96.204
     secrets: [ssh_username,ssh_password]
@@ -32,6 +36,7 @@ pipeline:
       - sudo docker network list -f name=internal | wc -l | awk '$0==1{cmd="sudo docker network create internal";system(cmd)}'
       - sudo docker-compose -f /root/wxapi/auth/docker-compose.yml down
       - sudo docker-compose -f /root/wxapi/auth/docker-compose.yml up -d
+
   wechat_notification:
     image: lizheming/drone-wechat
     secrets: [wechat_corpid,wechat_corp_secret,wechat_agent_id,wechat_to_tag]
