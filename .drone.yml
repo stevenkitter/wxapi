@@ -3,34 +3,28 @@ workspace:
   path: /wxapi
 
 pipeline:
-  backend:
+  apis:
     image: golang
     commands:
       - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o ./auth/app ./auth
-  docker:
+  docker_auth:
     image: plugins/docker
     repo: coderxu/wxapi_auth
     target: production
-    # username: coderxu
-    # password: wangxu226
     secrets: [docker_username,docker_password]
     dockerfile: ./auth/Dockerfile
-  scp:
+  scp_compose_yml:
     image: appleboy/drone-scp
     host: 45.76.96.204
-    # username: root
-    # password: k4W)YTgK1w,(mVZC
     secrets: [ssh_username,ssh_password]
     port: 22
     target: /root/wxapi/
     source: ./auth/docker-compose.yml
     strip_components: 1
 
-  ssh:
+  ssh_compose_start:
     image: appleboy/drone-ssh
     host: 45.76.96.204
-    # username: root
-    # password: k4W)YTgK1w,(mVZC
     secrets: [ssh_username,ssh_password]
     port: 22
     script: 
@@ -38,22 +32,18 @@ pipeline:
       - sudo docker network list -f name=internal | wc -l | awk '$0==1{cmd="sudo docker network create internal";system(cmd)}'
       - sudo docker-compose -f /root/wxapi/auth/docker-compose.yml down
       - sudo docker-compose -f /root/wxapi/auth/docker-compose.yml up -d
-  wechat:
+  wechat_notification:
     image: lizheming/drone-wechat
-    # corpid: ww4854a2c3aaec98f9
-    # corp_secret: -mPkllfoA6xjpsrHpvr3_bxp3yV9HYkiz2l5SxvkRaM 
-    # agent_id: 1000002
     secrets: [wechat_corpid,wechat_corp_secret,wechat_agent_id,wechat_to_tag]
-    # to_tag: 1
     msg_url: ${DRONE_BUILD_LINK}
     safe: 0
     btn_txt: ok
     title: ${DRONE_REPO_NAME}
     message: >
       {%if success %}
-        build {{build.number}} succeeded. Good job.
+        构建版本 {{build.number}} 成功. 开始测试业务流程吧.
       {% else %}
-        build {{build.number}} failed. Fix me please.
+        构建版本 {{build.number}} 失败. 请查找一下问题所在.
       {% endif %}
     when:
       status: [success,failure]
