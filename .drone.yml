@@ -21,7 +21,8 @@ pipeline:
     password: k4W)YTgK1w,(mVZC
     port: 22
     script:
-      - ls
+      - docker ps
+      - docker run --name wxapi_auth -p 8021:8021 -d coderxu/wxapi_auth
       
 
 
