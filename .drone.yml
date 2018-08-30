@@ -29,7 +29,7 @@ pipeline:
     corpid: ww4854a2c3aaec98f9
     corp_secret: -mPkllfoA6xjpsrHpvr3_bxp3yV9HYkiz2l5SxvkRaM 
     agent_id: 1000002
-    to_user: WangXu
+    to_tag: 1
     msg_url: ${DRONE_BUILD_LINK}
     safe: 0
     btn_txt: more
