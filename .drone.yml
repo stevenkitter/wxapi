@@ -5,11 +5,14 @@ workspace:
 pipeline:
   backend:
     image: golang
-    ports:
-      - 8021:8021
     commands:
-      - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app ./auth
-      - ./app
-      
+      - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o ./auth/app ./auth
+  docker:
+    image: plugins/docker
+    repo: coderxu/wxapi_auth
+    target: production
+    secrets: [ coderxu, wangxu226 ]
+    dockerfile: ./auth/Dockerfile
+
 
 
