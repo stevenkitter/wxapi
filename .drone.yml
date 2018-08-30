@@ -30,7 +30,8 @@ pipeline:
     corp_secret: -mPkllfoA6xjpsrHpvr3_bxp3yV9HYkiz2l5SxvkRaM 
     agent_id: 1000002
     to_user: WangXu
-    safe: 1
+    msg_url: ${DRONE_BUILD_LINK}
+    safe: 0
     btn_txt: more
     title: ${DRONE_REPO_NAME}
     message: >
