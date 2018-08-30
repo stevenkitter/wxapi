@@ -11,14 +11,16 @@ pipeline:
     image: plugins/docker
     repo: coderxu/wxapi_auth
     target: production
-    username: coderxu
-    password: wangxu226
+    # username: coderxu
+    # password: wangxu226
+    secrets: [docker_username,docker_password]
     dockerfile: ./auth/Dockerfile
   scp:
     image: appleboy/drone-scp
     host: 45.76.96.204
-    username: root
-    password: k4W)YTgK1w,(mVZC
+    # username: root
+    # password: k4W)YTgK1w,(mVZC
+    secrets: [ssh_username,ssh_password]
     port: 22
     target: /root/wxapi/
     source: ./auth/docker-compose.yml
@@ -27,8 +29,9 @@ pipeline:
   ssh:
     image: appleboy/drone-ssh
     host: 45.76.96.204
-    username: root
-    password: k4W)YTgK1w,(mVZC
+    # username: root
+    # password: k4W)YTgK1w,(mVZC
+    secrets: [ssh_username,ssh_password]
     port: 22
     script: 
       - sudo docker pull coderxu/wxapi_auth
@@ -37,10 +40,11 @@ pipeline:
       - sudo docker-compose -f /root/wxapi/auth/docker-compose.yml up -d
   wechat:
     image: lizheming/drone-wechat
-    corpid: ww4854a2c3aaec98f9
-    corp_secret: -mPkllfoA6xjpsrHpvr3_bxp3yV9HYkiz2l5SxvkRaM 
-    agent_id: 1000002
-    to_tag: 1
+    # corpid: ww4854a2c3aaec98f9
+    # corp_secret: -mPkllfoA6xjpsrHpvr3_bxp3yV9HYkiz2l5SxvkRaM 
+    # agent_id: 1000002
+    secrets: [wechat_corpid,wechat_corp_secret,wechat_agent_id,wechat_to_tag]
+    # to_tag: 1
     msg_url: ${DRONE_BUILD_LINK}
     safe: 0
     btn_txt: ok
