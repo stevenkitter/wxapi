@@ -20,7 +20,7 @@ pipeline:
     username: root
     password: k4W)YTgK1w,(mVZC
     port: 22
-    target: /root/wxapi/auth
+    target: /root/wxapi/
     source: ./auth/docker-compose.yml
     strip_components: 1
 
