@@ -22,6 +22,7 @@ pipeline:
     port: 22
     target: /root/wxapi/auth
     source: ./auth/docker-compose.yml
+    strip_components: 1
 
   ssh:
     image: appleboy/drone-ssh
@@ -30,9 +31,9 @@ pipeline:
     password: k4W)YTgK1w,(mVZC
     port: 22
     script:
-      - cd /root/wxapi/auth
+      - cd 
       - sudo docker pull coderxu/wxapi_auth
-      - sudo docker-compose up -d
+      - sudo docker-compose -f /root/wxapi/auth/docker-compose.yml up -d
   wechat:
     image: lizheming/drone-wechat
     corpid: ww4854a2c3aaec98f9
