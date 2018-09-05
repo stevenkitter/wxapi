@@ -7,20 +7,21 @@ pipeline:
     group: build
     image: golang
     commands:
+      - go get
       - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o ./auth/app ./auth
 
   docker_auth:
     image: plugins/docker
     repo: coderxu/wxapi_auth
     target: production
-    secrets: [docker_username,docker_password]
+    secrets: [docker_username, docker_password]
     dockerfile: ./auth/Dockerfile
 
   scp_compose_yml:
     group: build
     image: appleboy/drone-scp
     host: 45.76.96.204
-    secrets: [ssh_username,ssh_password]
+    secrets: [ssh_username, ssh_password]
     port: 22
     target: /root/wxapi/
     source: ./auth/docker-compose.yml
@@ -29,9 +30,9 @@ pipeline:
   ssh_compose_start:
     image: appleboy/drone-ssh
     host: 45.76.96.204
-    secrets: [ssh_username,ssh_password]
+    secrets: [ssh_username, ssh_password]
     port: 22
-    script: 
+    script:
       - sudo docker pull coderxu/wxapi_auth
       - sudo docker network list -f name=internal | wc -l | awk '$0==1{cmd="sudo docker network create internal";system(cmd)}'
       - sudo docker-compose -f /root/wxapi/auth/docker-compose.yml down
@@ -39,7 +40,7 @@ pipeline:
 
   wechat_notification:
     image: lizheming/drone-wechat
-    secrets: [wechat_corpid,wechat_corp_secret,wechat_agent_id,wechat_to_tag]
+    secrets: [wechat_corpid, wechat_corp_secret, wechat_agent_id, wechat_to_tag]
     msg_url: ${DRONE_BUILD_LINK}
     safe: 0
     btn_txt: ok
@@ -51,5 +52,4 @@ pipeline:
         构建版本 {{build.number}} 失败. 请查找一下问题所在.
       {% endif %}
     when:
-      status: [success,failure]
-
+      status: [success, failure]
