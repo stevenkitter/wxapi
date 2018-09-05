@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+service WxAuth {
+    rpc SaveTicket (WxAuthTicketSaveRequest) returns (WxAuthTicketSaveResponse);
+    rpc GetTicket (WxAuthTicketGetRequest) returns (WxAuthTicketGetResponse);
+}
+
+//保存ticket的请求
+message WxAuthTicketSaveRequest {
+    string appID = 1;
+    int64 createTime = 2;
+    string infoType = 3;
+    string componentVerifyTicket = 4;
+}
+
+//保存ticket的返回
+message WxAuthTicketSaveResponse {
+    int32 code = 1;
+    string message = 2;
+}
+
+//获取ticket的请求
+message WxAuthTicketGetRequest {
+    string appID = 1;
+}
+
+//获取ticket的返回
+message WxAuthTicketGetResponse {
+    string componentVerifyTicket = 1;
+}

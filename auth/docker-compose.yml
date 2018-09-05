@@ -3,11 +3,9 @@ version: "2"
 services:
   wxapi_auth:
     image: coderxu/wxapi_auth
-    ports:
-      - 8021:8021
     networks:
       - internal
 
-networks: 
+networks:
   internal:
     external: true
