@@ -3,13 +3,6 @@ workspace:
   path: /wxapi
 
 pipeline:
-  apis:
-    group: build
-    image: golang
-    commands:
-      - go get -d
-      - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o ./auth/app ./auth
-
   docker_auth:
     image: plugins/docker
     repo: coderxu/wxapi_auth
