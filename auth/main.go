@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -50,7 +51,7 @@ func main() {
 		db: mysql,
 	}
 	proto.RegisterWxAuthHandler(service.Server(), wxAuth)
-
+	fmt.Println("run the server")
 	serverLogger.Info("Run the server")
 	if err := service.Run(); err != nil {
 		serverLogger.Panic(err)
