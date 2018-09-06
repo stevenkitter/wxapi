@@ -15,6 +15,7 @@ const (
 )
 
 func main() {
+	log.Println("start")
 	//mysql
 	mysql, err := db.InitMysql()
 	Migrate(mysql) //migrate
