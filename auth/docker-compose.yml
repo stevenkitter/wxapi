@@ -8,7 +8,7 @@ services:
     environment:
       MICRO_REGISTRY: "mdns"
       MICRO_SERVER_ADDRESS: ":50051"
-      mysqlURL: mariadb:3306
+      MysqlURL: mariadb:3306
 networks:
   internal:
     external: true
