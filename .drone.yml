@@ -13,23 +13,23 @@ pipeline:
   scp_compose_yml:
     group: build
     image: appleboy/drone-scp
-    host: 45.76.96.204
+    host: 115.159.222.199
     secrets: [ssh_username, ssh_password]
     port: 22
-    target: /root/wxapi/
+    target: /home/ubuntu/wxapi/
     source: ./auth/docker-compose.yml
     strip_components: 1
 
   ssh_compose_start:
     image: appleboy/drone-ssh
-    host: 45.76.96.204
+    host: 115.159.222.199
     secrets: [ssh_username, ssh_password]
     port: 22
     script:
       - sudo docker pull coderxu/wxapi_auth
       - sudo docker network list -f name=internal | wc -l | awk '$0==1{cmd="sudo docker network create internal";system(cmd)}'
-      - sudo docker-compose -f $PWD/auth/docker-compose.yml down
-      - sudo docker-compose -f $PWD/auth/docker-compose.yml up -d
+      - sudo docker-compose -f /home/ubuntu/wxapi/auth/docker-compose.yml down
+      - sudo docker-compose -f /home/ubuntu/wxapi/auth/docker-compose.yml up -d
 
   wechat_notification:
     image: lizheming/drone-wechat
