@@ -5,7 +5,7 @@ services:
     image: coderxu/wxapi_auth
     networks:
       - internal
-    enviroment:
+    environment:
       MICRO_REGISTRY: consul
       MICRO_REGISTRY_ADDRESS: http://consul:8500
 
