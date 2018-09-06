@@ -18,7 +18,6 @@ pipeline:
     port: 22
     target: /home/ubuntu/wxapi/
     source: ./auth/docker-compose.yml
-    strip_components: 1
 
   ssh_compose_start:
     image: appleboy/drone-ssh
