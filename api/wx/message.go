@@ -18,7 +18,7 @@ type EncMessage struct {
 type ReceiveMessage struct {
 	XMLName               xml.Name `xml:"xml"`
 	AppID                 string   `xml:"AppId"`                 //第三方平台appid
-	CreateTime            string   `xml:"CreateTime"`            //时间戳
+	CreateTime            int64    `xml:"CreateTime"`            //时间戳
 	InfoType              string   `xml:"InfoType"`              //component_verify_ticket
 	ComponentVerifyTicket string   `xml:"ComponentVerifyTicket"` //Ticket内容
 }

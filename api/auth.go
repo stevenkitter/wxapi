@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"encoding/xml"
 	"errors"
+	"log"
 
 	"github.com/gin-gonic/gin"
 	"github.com/stevenkitter/wxapi/api/wx"
@@ -27,6 +28,18 @@ func (auth *AuthWX) Receive(c *gin.Context) {
 		c.String(200, "success")
 		return
 	}
+	saveResult, err := cl.SaveTicket(context.TODO(), &wxauth.WxAuthTicketSaveRequest{
+		AppID:                 receivedMessage.AppID,
+		CreateTime:            receivedMessage.CreateTime,
+		InfoType:              receivedMessage.InfoType,
+		ComponentVerifyTicket: receivedMessage.ComponentVerifyTicket,
+	})
+	if err != nil {
+		log.Println(err)
+	} else {
+		log.Println(saveResult.Message)
+	}
+
 	c.String(200, "success")
 }
 

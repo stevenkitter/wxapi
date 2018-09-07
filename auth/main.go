@@ -15,7 +15,6 @@ const (
 )
 
 func main() {
-	log.Println("start")
 	//mysql
 	mysql, err := db.InitMysql()
 	Migrate(mysql) //migrate
@@ -32,7 +31,7 @@ func main() {
 		db: mysql,
 	}
 	proto.RegisterWxAuthHandler(service.Server(), wxAuth)
-	log.Println("Run the server")
+	log.Println("Run the " + serverName + " server")
 	if err := service.Run(); err != nil {
 		log.Panicln(err)
 	}
