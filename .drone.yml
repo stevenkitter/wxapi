@@ -3,12 +3,20 @@ workspace:
   path: /wxapi
 
 pipeline:
-  docker_auth:
+  docker_auth_micro:
     image: plugins/docker
-    repo: coderxu/wxapi_auth
+    repo: registry.cn-shanghai.aliyuncs.com/xugopher/wx_micro_auth
     target: production
+    registry: registry.cn-shanghai.aliyuncs.com
     secrets: [docker_username, docker_password]
     dockerfile: ./auth/Dockerfile
+  docker_auth_api:
+    image: plugins/docker
+    repo: registry.cn-shanghai.aliyuncs.com/xugopher/wx_api_handler
+    target: production
+    registry: registry.cn-shanghai.aliyuncs.com
+    secrets: [docker_username, docker_password]
+    dockerfile: ./api/Dockerfile
 
   scp_compose_yml:
     group: build
