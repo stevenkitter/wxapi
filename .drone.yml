@@ -29,7 +29,7 @@ pipeline:
       - /home/ubuntu/wxapi/auth
     source:
       - ./docker-compose.yml
-      - ./micro-compose.yml
+      - ./micro.docker-compose.yml
 
   ssh_compose_start:
     image: appleboy/drone-ssh
