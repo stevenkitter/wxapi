@@ -19,7 +19,6 @@ services:
     environment:
       MICRO_REGISTRY: "consul"
       MICRO_REGISTRY_ADDRESS: consul:8500
-      MICRO_SERVER_ADDRESS: consul
 
 networks:
   internal:
