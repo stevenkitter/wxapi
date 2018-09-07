@@ -25,7 +25,7 @@ pipeline:
     secrets: [ssh_username, ssh_password]
     port: 22
     target: /home/ubuntu/wxapi/
-    source: ./auth/docker-compose.yml
+    source: ./docker-compose.yml
 
   ssh_compose_start:
     image: appleboy/drone-ssh
