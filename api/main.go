@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
+	micro "github.com/micro/go-micro"
 	wxauth "github.com/stevenkitter/wxapi/proto/wxAuth"
 )
 
@@ -12,8 +13,10 @@ var (
 )
 
 func main() {
+	service := micro.NewService(micro.Name("wx.api.client"))
+	service.Init()
 	// setup Greeter Server Client
-	cl = wxauth.NewWxAuthService("wx.srv.auth", nil)
+	cl = wxauth.NewWxAuthService("wx.srv.auth", service.Client())
 
 	wxau := new(AuthWX)
 	router := gin.Default()
