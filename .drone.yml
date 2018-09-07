@@ -33,7 +33,8 @@ pipeline:
     secrets: [ssh_username, ssh_password]
     port: 22
     script:
-      - sudo docker pull coderxu/wxapi_auth
+      - sudo docker pull registry.cn-shanghai.aliyuncs.com/xugopher/wx_micro_auth
+      - sudo docker pull registry.cn-shanghai.aliyuncs.com/xugopher/wx_api_handler
       - sudo docker network list -f name=internal | wc -l | awk '$0==1{cmd="sudo docker network create internal";system(cmd)}'
       - sudo docker-compose -f /home/ubuntu/wxapi/auth/docker-compose.yml down
       - sudo docker-compose -f /home/ubuntu/wxapi/auth/docker-compose.yml up -d

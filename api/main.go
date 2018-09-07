@@ -17,7 +17,6 @@ func main() {
 	// setup Greeter Server Client
 	cl = wxauth.NewWxAuthService("wx.srv.auth", client.DefaultClient)
 
-	// Create RESTful handler (using Gin)
 	wxau := new(AuthWX)
 	router := gin.Default()
 	router.GET("/wx", wxau.Receive)
