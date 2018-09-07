@@ -24,8 +24,12 @@ pipeline:
     host: 115.159.222.199
     secrets: [ssh_username, ssh_password]
     port: 22
-    target: /home/ubuntu/wxapi/
-    source: ./docker-compose.yml
+    target:
+      - /home/ubuntu/wxapi/
+      - /home/ubuntu/wxapi/auth
+    source:
+      - ./docker-compose.yml
+      - ./micro-compose.yml
 
   ssh_compose_start:
     image: appleboy/drone-ssh
@@ -36,8 +40,8 @@ pipeline:
       - sudo docker pull registry.cn-shanghai.aliyuncs.com/xugopher/wx_micro_auth
       - sudo docker pull registry.cn-shanghai.aliyuncs.com/xugopher/wx_api_handler
       - sudo docker network list -f name=internal | wc -l | awk '$0==1{cmd="sudo docker network create internal";system(cmd)}'
-      - sudo docker-compose -f /home/ubuntu/wxapi/auth/docker-compose.yml down
-      - sudo docker-compose -f /home/ubuntu/wxapi/auth/docker-compose.yml up -d
+      - sudo docker-compose -f /home/ubuntu/wxapi/docker-compose.yml down
+      - sudo docker-compose -f /home/ubuntu/wxapi/docker-compose.yml up -d
 
   wechat_notification:
     image: lizheming/drone-wechat
