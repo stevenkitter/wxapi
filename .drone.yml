@@ -3,14 +3,6 @@ workspace:
   path: /wxapi
 
 pipeline:
-  build:
-    image: golang
-    commands:
-      - dep ensure -update
-      - go test -v
-      - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o ./auth/app ./auth
-      - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o ./api/app ./api
-
   docker_auth_micro:
     image: plugins/docker
     repo: registry.cn-shanghai.aliyuncs.com/xugopher/wx_micro_auth
