@@ -14,6 +14,23 @@
   revision = "3a0bb77429bd3a61596f5e8a3172445844342120"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/gin-contrib/sse"
+  packages = ["."]
+  revision = "22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae"
+
+[[projects]]
+  name = "github.com/gin-gonic/gin"
+  packages = [
+    ".",
+    "binding",
+    "json",
+    "render"
+  ]
+  revision = "b869fe1415e4b9eb52f247441830d502aece2d4d"
+  version = "v1.3.0"
+
+[[projects]]
   name = "github.com/go-log/log"
   packages = [
     ".",
@@ -77,6 +94,18 @@
   revision = "04140366298a54a039076d798123ffa108fff46c"
 
 [[projects]]
+  name = "github.com/json-iterator/go"
+  packages = ["."]
+  revision = "1624edc4454b8682399def8740d46db5e4362ba4"
+  version = "v1.1.5"
+
+[[projects]]
+  name = "github.com/mattn/go-isatty"
+  packages = ["."]
+  revision = "6ca4dbf54d38eea1a992b3c722a76a5d1c4cb25c"
+  version = "v0.0.4"
+
+[[projects]]
   branch = "master"
   name = "github.com/micro/cli"
   packages = ["."]
@@ -125,6 +154,12 @@
   revision = "a581a57b513351792b9f21fc8b95d87b1c5a95da"
 
 [[projects]]
+  name = "github.com/micro/go-web"
+  packages = ["."]
+  revision = "8373ea64a8063743652142796015afdf090d98db"
+  version = "v0.4.0"
+
+[[projects]]
   branch = "master"
   name = "github.com/micro/mdns"
   packages = ["."]
@@ -135,6 +170,7 @@
   name = "github.com/micro/util"
   packages = [
     "go/lib/addr",
+    "go/lib/http",
     "go/lib/net",
     "go/lib/tls"
   ]
@@ -163,6 +199,18 @@
   packages = ["."]
   revision = "fa473d140ef3c6adf42d6b391fe76707f1f243c8"
   version = "v1.0.0"
+
+[[projects]]
+  name = "github.com/modern-go/concurrent"
+  packages = ["."]
+  revision = "bacd9c7ef1dd9b15be4a9909b8ac7a4e313eec94"
+  version = "1.0.3"
+
+[[projects]]
+  name = "github.com/modern-go/reflect2"
+  packages = ["."]
+  revision = "4b7aa43c6742a2c18fdef89dd197aaae7dac7ccd"
+  version = "1.0.1"
 
 [[projects]]
   name = "github.com/opentracing/opentracing-go"
@@ -222,6 +270,12 @@
   version = "v1.5.0"
 
 [[projects]]
+  name = "github.com/ugorji/go"
+  packages = ["codec"]
+  revision = "b4c50a2b199d93b13dc15e78929cfb23bfdf21ab"
+  version = "v1.1.1"
+
+[[projects]]
   branch = "master"
   name = "golang.org/x/crypto"
   packages = [
@@ -259,9 +313,21 @@
   revision = "b1f26356af11148e710935ed1ac8a7f5702c7612"
   version = "v1.1.0"
 
+[[projects]]
+  name = "gopkg.in/go-playground/validator.v8"
+  packages = ["."]
+  revision = "5f1438d3fca68893a817e4a66806cea46a9e4ebf"
+  version = "v8.18.2"
+
+[[projects]]
+  name = "gopkg.in/yaml.v2"
+  packages = ["."]
+  revision = "5420a8b6744d3b0345ab293f6fcba19c978f1183"
+  version = "v2.2.1"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "e44a8af56ed6bf5386774e39021aa94d095c6aaee27ca0fff12bf196d85c2972"
+  inputs-digest = "7c4a61c45e8b024fa12a978ce1e8ca34a6acc92e8851164eed106d65d2d9463e"
   solver-name = "gps-cdcl"
   solver-version = 1
