@@ -1,10 +1,7 @@
-version: "2" 
-services: 
-  drone-server: 
-    image: drone/drone:0.8 
-    ports: 
-      - 80:8000
-      - 9000
+version: "2"
+services:
+  drone-server:
+    image: drone/drone:0.8
     volumes:
       - /root/drone/lib:/var/lib/drone/
     environment:
@@ -22,5 +19,5 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - DRONE_SERVER=drone-server:9000 
+      - DRONE_SERVER=drone-server:9000
       - DRONE_SECRET=${DRONE_SECRET}
