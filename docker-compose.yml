@@ -16,8 +16,6 @@ services:
       - internal
     depends_on:
       - wxapi_micro_auth
-    ports:
-      - 8999:8080
     environment:
       MICRO_REGISTRY: "consul"
       MICRO_REGISTRY_ADDRESS: consul:8500
