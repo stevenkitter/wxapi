@@ -2,10 +2,19 @@ syntax = "proto3";
 
 service WxAuth {
     rpc SaveTicket (WxAuthTicketSaveRequest) returns (WxAuthTicketSaveResponse);
-    rpc GetTicket (WxAuthTicketGetRequest) returns (WxAuthTicketGetResponse);
+    rpc GetTicket (ComponentAppidRequest) returns (WxAuthTicketGetResponse);
+    rpc GetComponentAccessToken (ComponentAccessTokenRequest) returns (ComponentAccessTokenResponse);
+    rpc GetPreAuthCode (ComponentAppidRequest) returns (PreAuthCodeResponse);
+    rpc GetAuthorizationInfo (AuthorizationInfoRequest) returns (AuthorizationInfoResponse);
+    rpc RefreshAuthorizerAccessToken (RefreshAuthorizerAccessTokenRequest) returns (RefreshAuthorizerAccessTokenResponse);
+    rpc GetAuthorizerInfo (AuthorizerInfoRequest) returns (AuthorizerInfoResponse);
+    rpc GetAuthorizerOption (AuthorizerOptionRequest) returns (AuthorizerOptionResponse);
+    rpc SetAuthorizerOption (SetAuthorizerOptionRequest) returns (SetAuthorizerOptionResponse);
+    rpc GetAuthURL (GetAuthURLRequest) returns (GetAuthURLResponse);
 }
 
-//保存ticket的请求
+
+//保存ticket的请求 *************************************
 message WxAuthTicketSaveRequest {
     string appID = 1;
     int64 createTime = 2;
@@ -19,12 +28,159 @@ message WxAuthTicketSaveResponse {
     string message = 2;
 }
 
-//获取ticket的请求
-message WxAuthTicketGetRequest {
-    string appID = 1;
-}
-
-//获取ticket的返回
+//获取ticket的返回 ***************************************
 message WxAuthTicketGetResponse {
     string componentVerifyTicket = 1;
+}
+
+//ComponentAccessTokenRequest ***************************
+message ComponentAccessTokenRequest {
+    string componentAppid = 1;
+    string componentAppsecret = 2;
+    string componentVerifyTicket = 3;
+}
+//ComponentAccessTokenResponse token
+message ComponentAccessTokenResponse {
+    string componentAccessToken = 1;
+    int32 expiresIn = 2;
+}
+
+//PreAuthCodeRequest **************************************
+message ComponentAppidRequest {
+    string componentAppid = 1;
+}
+//PreAuthCodeResponse
+message PreAuthCodeResponse {
+    string preAuthCode = 1;
+    int32 expiresIn = 2;
+}
+
+//AuthorizationInfoRequest *********************************
+message AuthorizationInfoRequest {
+    string componentAppid = 1;
+    string authorizationCode = 2;
+}
+//AuthorizationInfoResponse
+message AuthorizationInfoResponse {
+    AuthorizationInfo authorizationInfo = 1;
+}
+message AuthorizationInfo {
+    string authorizerAppid = 1;
+    string authorizerAccessToken = 2;
+    int32 expiresIn = 3;
+    string authorizerRefreshToken = 4;
+    repeated FuncscopeCategory funcInfo = 5;
+}
+message FuncscopeCategory{
+    ServiceTypeInfo funcscopeCategory = 1;
+}
+
+//RefreshAuthorizerAccessTokenRequest *************************
+message RefreshAuthorizerAccessTokenRequest {
+    string componentAppid = 1;
+    string authorizerAppid = 2;
+    string authorizerRefreshToken = 3;
+}
+message RefreshAuthorizerAccessTokenResponse {
+    string authorizerAccessToken = 1;
+    int32 expiresIn = 2;
+    string authorizerRefreshToken = 3;
+}
+
+//AuthorizerInfoRequest *************************************
+message AuthorizerInfoRequest {
+    string componentAppid = 1;
+    string authorizerAppid = 2;
+}
+
+message AuthorizerInfoResponse {
+    AuthorizerInfo authorizerInfo = 1;
+    AuthorizationInfo authorizationInfo = 2;
+}
+
+message AuthorizerInfo {
+    string nickName = 1;
+    string headImg = 2;
+    ServiceTypeInfo serviceTypeInfo = 3;
+    ServiceTypeInfo verifyTypeInfo = 4;
+    string userName = 5;
+    string principalName = 6;
+    BusinessInfo businessInfo = 7;
+    string alias = 8;
+    string qrcodeUrl = 9;
+}
+
+message MiniAppAuthorizerInfo {
+    string nickName = 1;
+    string headImg = 2;
+    ServiceTypeInfo serviceTypeInfo = 3;
+    ServiceTypeInfo verifyTypeInfo = 4;
+    string userName = 5;
+    string principalName = 6;
+    BusinessInfo businessInfo = 7;
+    string qrcodeUrl = 9;
+    string signature = 10;
+    MiniProgramInfo miniProgramInfo = 11;
+}
+message MiniProgramInfo {
+    MiniProgramInfoNetwork network = 1;
+    repeated Categorie categories = 2;
+    int32 visitStatus = 3;
+}
+message MiniProgramInfoNetwork {
+    repeated string requestDomain = 1;
+    repeated string wsRequestDomain = 2;
+    repeated string uploadDomain = 3;
+    repeated string downloadDomain = 4;
+}
+message Categorie {
+    string first = 1;
+    string second = 2;
+}
+
+message ServiceTypeInfo {
+    int32 id = 1;
+}
+message BusinessInfo {
+    int32 openStore = 1;
+    int32 openScan = 2;
+    int32 openPay = 3;
+    int32 openCard = 4;
+    int32 openShake = 5;
+}
+
+message AuthorizerOptionRequest {
+    string componentAppid = 1;
+    string authorizerAppid = 2;
+    string optionName = 3;
+}
+
+message AuthorizerOptionResponse {
+    string authorizerAppid = 1;
+    string optionName = 2;
+    string optionValue = 3;
+}
+
+message SetAuthorizerOptionRequest {
+    string componentAppid = 1;
+    string authorizerAppid = 2;
+    string optionName = 3;
+    string optionValue = 4;
+}
+
+message SetAuthorizerOptionResponse {
+    int32 errcode = 1;
+    string errmsg = 2;
+}
+
+message GetAuthURLRequest {
+    string componentAppid = 1;
+    string redirectURL = 2;
+    int64 tag = 3; // 0 web 1 app
+    string AuthType = 4;
+    string bizAppid = 5;
+}
+
+message GetAuthURLResponse {
+    string authURL = 1;
 }

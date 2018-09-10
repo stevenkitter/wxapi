@@ -7,3 +7,6 @@ services:
     environment:
       MICRO_REGISTRY: "consul"
       MICRO_REGISTRY_ADDRESS: consul:8500
+networks:
+  internal:
+    external: true

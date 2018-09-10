@@ -10,8 +10,32 @@ It is generated from these files:
 It has these top-level messages:
 	WxAuthTicketSaveRequest
 	WxAuthTicketSaveResponse
-	WxAuthTicketGetRequest
 	WxAuthTicketGetResponse
+	ComponentAccessTokenRequest
+	ComponentAccessTokenResponse
+	ComponentAppidRequest
+	PreAuthCodeResponse
+	AuthorizationInfoRequest
+	AuthorizationInfoResponse
+	AuthorizationInfo
+	FuncscopeCategory
+	RefreshAuthorizerAccessTokenRequest
+	RefreshAuthorizerAccessTokenResponse
+	AuthorizerInfoRequest
+	AuthorizerInfoResponse
+	AuthorizerInfo
+	MiniAppAuthorizerInfo
+	MiniProgramInfo
+	MiniProgramInfoNetwork
+	Categorie
+	ServiceTypeInfo
+	BusinessInfo
+	AuthorizerOptionRequest
+	AuthorizerOptionResponse
+	SetAuthorizerOptionRequest
+	SetAuthorizerOptionResponse
+	GetAuthURLRequest
+	GetAuthURLResponse
 */
 package wxAuth
 
@@ -45,7 +69,15 @@ var _ server.Option
 
 type WxAuthService interface {
 	SaveTicket(ctx context.Context, in *WxAuthTicketSaveRequest, opts ...client.CallOption) (*WxAuthTicketSaveResponse, error)
-	GetTicket(ctx context.Context, in *WxAuthTicketGetRequest, opts ...client.CallOption) (*WxAuthTicketGetResponse, error)
+	GetTicket(ctx context.Context, in *ComponentAppidRequest, opts ...client.CallOption) (*WxAuthTicketGetResponse, error)
+	GetComponentAccessToken(ctx context.Context, in *ComponentAccessTokenRequest, opts ...client.CallOption) (*ComponentAccessTokenResponse, error)
+	GetPreAuthCode(ctx context.Context, in *ComponentAppidRequest, opts ...client.CallOption) (*PreAuthCodeResponse, error)
+	GetAuthorizationInfo(ctx context.Context, in *AuthorizationInfoRequest, opts ...client.CallOption) (*AuthorizationInfoResponse, error)
+	RefreshAuthorizerAccessToken(ctx context.Context, in *RefreshAuthorizerAccessTokenRequest, opts ...client.CallOption) (*RefreshAuthorizerAccessTokenResponse, error)
+	GetAuthorizerInfo(ctx context.Context, in *AuthorizerInfoRequest, opts ...client.CallOption) (*AuthorizerInfoResponse, error)
+	GetAuthorizerOption(ctx context.Context, in *AuthorizerOptionRequest, opts ...client.CallOption) (*AuthorizerOptionResponse, error)
+	SetAuthorizerOption(ctx context.Context, in *SetAuthorizerOptionRequest, opts ...client.CallOption) (*SetAuthorizerOptionResponse, error)
+	GetAuthURL(ctx context.Context, in *GetAuthURLRequest, opts ...client.CallOption) (*GetAuthURLResponse, error)
 }
 
 type wxAuthService struct {
@@ -76,9 +108,89 @@ func (c *wxAuthService) SaveTicket(ctx context.Context, in *WxAuthTicketSaveRequ
 	return out, nil
 }
 
-func (c *wxAuthService) GetTicket(ctx context.Context, in *WxAuthTicketGetRequest, opts ...client.CallOption) (*WxAuthTicketGetResponse, error) {
+func (c *wxAuthService) GetTicket(ctx context.Context, in *ComponentAppidRequest, opts ...client.CallOption) (*WxAuthTicketGetResponse, error) {
 	req := c.c.NewRequest(c.name, "WxAuth.GetTicket", in)
 	out := new(WxAuthTicketGetResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wxAuthService) GetComponentAccessToken(ctx context.Context, in *ComponentAccessTokenRequest, opts ...client.CallOption) (*ComponentAccessTokenResponse, error) {
+	req := c.c.NewRequest(c.name, "WxAuth.GetComponentAccessToken", in)
+	out := new(ComponentAccessTokenResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wxAuthService) GetPreAuthCode(ctx context.Context, in *ComponentAppidRequest, opts ...client.CallOption) (*PreAuthCodeResponse, error) {
+	req := c.c.NewRequest(c.name, "WxAuth.GetPreAuthCode", in)
+	out := new(PreAuthCodeResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wxAuthService) GetAuthorizationInfo(ctx context.Context, in *AuthorizationInfoRequest, opts ...client.CallOption) (*AuthorizationInfoResponse, error) {
+	req := c.c.NewRequest(c.name, "WxAuth.GetAuthorizationInfo", in)
+	out := new(AuthorizationInfoResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wxAuthService) RefreshAuthorizerAccessToken(ctx context.Context, in *RefreshAuthorizerAccessTokenRequest, opts ...client.CallOption) (*RefreshAuthorizerAccessTokenResponse, error) {
+	req := c.c.NewRequest(c.name, "WxAuth.RefreshAuthorizerAccessToken", in)
+	out := new(RefreshAuthorizerAccessTokenResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wxAuthService) GetAuthorizerInfo(ctx context.Context, in *AuthorizerInfoRequest, opts ...client.CallOption) (*AuthorizerInfoResponse, error) {
+	req := c.c.NewRequest(c.name, "WxAuth.GetAuthorizerInfo", in)
+	out := new(AuthorizerInfoResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wxAuthService) GetAuthorizerOption(ctx context.Context, in *AuthorizerOptionRequest, opts ...client.CallOption) (*AuthorizerOptionResponse, error) {
+	req := c.c.NewRequest(c.name, "WxAuth.GetAuthorizerOption", in)
+	out := new(AuthorizerOptionResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wxAuthService) SetAuthorizerOption(ctx context.Context, in *SetAuthorizerOptionRequest, opts ...client.CallOption) (*SetAuthorizerOptionResponse, error) {
+	req := c.c.NewRequest(c.name, "WxAuth.SetAuthorizerOption", in)
+	out := new(SetAuthorizerOptionResponse)
+	err := c.c.Call(ctx, req, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wxAuthService) GetAuthURL(ctx context.Context, in *GetAuthURLRequest, opts ...client.CallOption) (*GetAuthURLResponse, error) {
+	req := c.c.NewRequest(c.name, "WxAuth.GetAuthURL", in)
+	out := new(GetAuthURLResponse)
 	err := c.c.Call(ctx, req, out, opts...)
 	if err != nil {
 		return nil, err
@@ -90,13 +202,29 @@ func (c *wxAuthService) GetTicket(ctx context.Context, in *WxAuthTicketGetReques
 
 type WxAuthHandler interface {
 	SaveTicket(context.Context, *WxAuthTicketSaveRequest, *WxAuthTicketSaveResponse) error
-	GetTicket(context.Context, *WxAuthTicketGetRequest, *WxAuthTicketGetResponse) error
+	GetTicket(context.Context, *ComponentAppidRequest, *WxAuthTicketGetResponse) error
+	GetComponentAccessToken(context.Context, *ComponentAccessTokenRequest, *ComponentAccessTokenResponse) error
+	GetPreAuthCode(context.Context, *ComponentAppidRequest, *PreAuthCodeResponse) error
+	GetAuthorizationInfo(context.Context, *AuthorizationInfoRequest, *AuthorizationInfoResponse) error
+	RefreshAuthorizerAccessToken(context.Context, *RefreshAuthorizerAccessTokenRequest, *RefreshAuthorizerAccessTokenResponse) error
+	GetAuthorizerInfo(context.Context, *AuthorizerInfoRequest, *AuthorizerInfoResponse) error
+	GetAuthorizerOption(context.Context, *AuthorizerOptionRequest, *AuthorizerOptionResponse) error
+	SetAuthorizerOption(context.Context, *SetAuthorizerOptionRequest, *SetAuthorizerOptionResponse) error
+	GetAuthURL(context.Context, *GetAuthURLRequest, *GetAuthURLResponse) error
 }
 
 func RegisterWxAuthHandler(s server.Server, hdlr WxAuthHandler, opts ...server.HandlerOption) error {
 	type wxAuth interface {
 		SaveTicket(ctx context.Context, in *WxAuthTicketSaveRequest, out *WxAuthTicketSaveResponse) error
-		GetTicket(ctx context.Context, in *WxAuthTicketGetRequest, out *WxAuthTicketGetResponse) error
+		GetTicket(ctx context.Context, in *ComponentAppidRequest, out *WxAuthTicketGetResponse) error
+		GetComponentAccessToken(ctx context.Context, in *ComponentAccessTokenRequest, out *ComponentAccessTokenResponse) error
+		GetPreAuthCode(ctx context.Context, in *ComponentAppidRequest, out *PreAuthCodeResponse) error
+		GetAuthorizationInfo(ctx context.Context, in *AuthorizationInfoRequest, out *AuthorizationInfoResponse) error
+		RefreshAuthorizerAccessToken(ctx context.Context, in *RefreshAuthorizerAccessTokenRequest, out *RefreshAuthorizerAccessTokenResponse) error
+		GetAuthorizerInfo(ctx context.Context, in *AuthorizerInfoRequest, out *AuthorizerInfoResponse) error
+		GetAuthorizerOption(ctx context.Context, in *AuthorizerOptionRequest, out *AuthorizerOptionResponse) error
+		SetAuthorizerOption(ctx context.Context, in *SetAuthorizerOptionRequest, out *SetAuthorizerOptionResponse) error
+		GetAuthURL(ctx context.Context, in *GetAuthURLRequest, out *GetAuthURLResponse) error
 	}
 	type WxAuth struct {
 		wxAuth
@@ -113,6 +241,38 @@ func (h *wxAuthHandler) SaveTicket(ctx context.Context, in *WxAuthTicketSaveRequ
 	return h.WxAuthHandler.SaveTicket(ctx, in, out)
 }
 
-func (h *wxAuthHandler) GetTicket(ctx context.Context, in *WxAuthTicketGetRequest, out *WxAuthTicketGetResponse) error {
+func (h *wxAuthHandler) GetTicket(ctx context.Context, in *ComponentAppidRequest, out *WxAuthTicketGetResponse) error {
 	return h.WxAuthHandler.GetTicket(ctx, in, out)
+}
+
+func (h *wxAuthHandler) GetComponentAccessToken(ctx context.Context, in *ComponentAccessTokenRequest, out *ComponentAccessTokenResponse) error {
+	return h.WxAuthHandler.GetComponentAccessToken(ctx, in, out)
+}
+
+func (h *wxAuthHandler) GetPreAuthCode(ctx context.Context, in *ComponentAppidRequest, out *PreAuthCodeResponse) error {
+	return h.WxAuthHandler.GetPreAuthCode(ctx, in, out)
+}
+
+func (h *wxAuthHandler) GetAuthorizationInfo(ctx context.Context, in *AuthorizationInfoRequest, out *AuthorizationInfoResponse) error {
+	return h.WxAuthHandler.GetAuthorizationInfo(ctx, in, out)
+}
+
+func (h *wxAuthHandler) RefreshAuthorizerAccessToken(ctx context.Context, in *RefreshAuthorizerAccessTokenRequest, out *RefreshAuthorizerAccessTokenResponse) error {
+	return h.WxAuthHandler.RefreshAuthorizerAccessToken(ctx, in, out)
+}
+
+func (h *wxAuthHandler) GetAuthorizerInfo(ctx context.Context, in *AuthorizerInfoRequest, out *AuthorizerInfoResponse) error {
+	return h.WxAuthHandler.GetAuthorizerInfo(ctx, in, out)
+}
+
+func (h *wxAuthHandler) GetAuthorizerOption(ctx context.Context, in *AuthorizerOptionRequest, out *AuthorizerOptionResponse) error {
+	return h.WxAuthHandler.GetAuthorizerOption(ctx, in, out)
+}
+
+func (h *wxAuthHandler) SetAuthorizerOption(ctx context.Context, in *SetAuthorizerOptionRequest, out *SetAuthorizerOptionResponse) error {
+	return h.WxAuthHandler.SetAuthorizerOption(ctx, in, out)
+}
+
+func (h *wxAuthHandler) GetAuthURL(ctx context.Context, in *GetAuthURLRequest, out *GetAuthURLResponse) error {
+	return h.WxAuthHandler.GetAuthURL(ctx, in, out)
 }

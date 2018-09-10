@@ -18,7 +18,7 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-// 保存ticket的请求
+// 保存ticket的请求 *************************************
 type WxAuthTicketSaveRequest struct {
 	AppID                 string   `protobuf:"bytes,1,opt,name=appID,proto3" json:"appID,omitempty"`
 	CreateTime            int64    `protobuf:"varint,2,opt,name=createTime,proto3" json:"createTime,omitempty"`
@@ -33,7 +33,7 @@ func (m *WxAuthTicketSaveRequest) Reset()         { *m = WxAuthTicketSaveRequest
 func (m *WxAuthTicketSaveRequest) String() string { return proto.CompactTextString(m) }
 func (*WxAuthTicketSaveRequest) ProtoMessage()    {}
 func (*WxAuthTicketSaveRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_wxAuth_677ce89ad62c4ff2, []int{0}
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{0}
 }
 func (m *WxAuthTicketSaveRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WxAuthTicketSaveRequest.Unmarshal(m, b)
@@ -94,7 +94,7 @@ func (m *WxAuthTicketSaveResponse) Reset()         { *m = WxAuthTicketSaveRespon
 func (m *WxAuthTicketSaveResponse) String() string { return proto.CompactTextString(m) }
 func (*WxAuthTicketSaveResponse) ProtoMessage()    {}
 func (*WxAuthTicketSaveResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_wxAuth_677ce89ad62c4ff2, []int{1}
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{1}
 }
 func (m *WxAuthTicketSaveResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WxAuthTicketSaveResponse.Unmarshal(m, b)
@@ -128,46 +128,7 @@ func (m *WxAuthTicketSaveResponse) GetMessage() string {
 	return ""
 }
 
-// 获取ticket的请求
-type WxAuthTicketGetRequest struct {
-	AppID                string   `protobuf:"bytes,1,opt,name=appID,proto3" json:"appID,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *WxAuthTicketGetRequest) Reset()         { *m = WxAuthTicketGetRequest{} }
-func (m *WxAuthTicketGetRequest) String() string { return proto.CompactTextString(m) }
-func (*WxAuthTicketGetRequest) ProtoMessage()    {}
-func (*WxAuthTicketGetRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_wxAuth_677ce89ad62c4ff2, []int{2}
-}
-func (m *WxAuthTicketGetRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_WxAuthTicketGetRequest.Unmarshal(m, b)
-}
-func (m *WxAuthTicketGetRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_WxAuthTicketGetRequest.Marshal(b, m, deterministic)
-}
-func (dst *WxAuthTicketGetRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_WxAuthTicketGetRequest.Merge(dst, src)
-}
-func (m *WxAuthTicketGetRequest) XXX_Size() int {
-	return xxx_messageInfo_WxAuthTicketGetRequest.Size(m)
-}
-func (m *WxAuthTicketGetRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_WxAuthTicketGetRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_WxAuthTicketGetRequest proto.InternalMessageInfo
-
-func (m *WxAuthTicketGetRequest) GetAppID() string {
-	if m != nil {
-		return m.AppID
-	}
-	return ""
-}
-
-// 获取ticket的返回
+// 获取ticket的返回 ***************************************
 type WxAuthTicketGetResponse struct {
 	ComponentVerifyTicket string   `protobuf:"bytes,1,opt,name=componentVerifyTicket,proto3" json:"componentVerifyTicket,omitempty"`
 	XXX_NoUnkeyedLiteral  struct{} `json:"-"`
@@ -179,7 +140,7 @@ func (m *WxAuthTicketGetResponse) Reset()         { *m = WxAuthTicketGetResponse
 func (m *WxAuthTicketGetResponse) String() string { return proto.CompactTextString(m) }
 func (*WxAuthTicketGetResponse) ProtoMessage()    {}
 func (*WxAuthTicketGetResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_wxAuth_677ce89ad62c4ff2, []int{3}
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{2}
 }
 func (m *WxAuthTicketGetResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_WxAuthTicketGetResponse.Unmarshal(m, b)
@@ -206,32 +167,1513 @@ func (m *WxAuthTicketGetResponse) GetComponentVerifyTicket() string {
 	return ""
 }
 
+// ComponentAccessTokenRequest ***************************
+type ComponentAccessTokenRequest struct {
+	ComponentAppid        string   `protobuf:"bytes,1,opt,name=componentAppid,proto3" json:"componentAppid,omitempty"`
+	ComponentAppsecret    string   `protobuf:"bytes,2,opt,name=componentAppsecret,proto3" json:"componentAppsecret,omitempty"`
+	ComponentVerifyTicket string   `protobuf:"bytes,3,opt,name=componentVerifyTicket,proto3" json:"componentVerifyTicket,omitempty"`
+	XXX_NoUnkeyedLiteral  struct{} `json:"-"`
+	XXX_unrecognized      []byte   `json:"-"`
+	XXX_sizecache         int32    `json:"-"`
+}
+
+func (m *ComponentAccessTokenRequest) Reset()         { *m = ComponentAccessTokenRequest{} }
+func (m *ComponentAccessTokenRequest) String() string { return proto.CompactTextString(m) }
+func (*ComponentAccessTokenRequest) ProtoMessage()    {}
+func (*ComponentAccessTokenRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{3}
+}
+func (m *ComponentAccessTokenRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ComponentAccessTokenRequest.Unmarshal(m, b)
+}
+func (m *ComponentAccessTokenRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ComponentAccessTokenRequest.Marshal(b, m, deterministic)
+}
+func (dst *ComponentAccessTokenRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ComponentAccessTokenRequest.Merge(dst, src)
+}
+func (m *ComponentAccessTokenRequest) XXX_Size() int {
+	return xxx_messageInfo_ComponentAccessTokenRequest.Size(m)
+}
+func (m *ComponentAccessTokenRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ComponentAccessTokenRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ComponentAccessTokenRequest proto.InternalMessageInfo
+
+func (m *ComponentAccessTokenRequest) GetComponentAppid() string {
+	if m != nil {
+		return m.ComponentAppid
+	}
+	return ""
+}
+
+func (m *ComponentAccessTokenRequest) GetComponentAppsecret() string {
+	if m != nil {
+		return m.ComponentAppsecret
+	}
+	return ""
+}
+
+func (m *ComponentAccessTokenRequest) GetComponentVerifyTicket() string {
+	if m != nil {
+		return m.ComponentVerifyTicket
+	}
+	return ""
+}
+
+// ComponentAccessTokenResponse token
+type ComponentAccessTokenResponse struct {
+	ComponentAccessToken string   `protobuf:"bytes,1,opt,name=componentAccessToken,proto3" json:"componentAccessToken,omitempty"`
+	ExpiresIn            int32    `protobuf:"varint,2,opt,name=expiresIn,proto3" json:"expiresIn,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ComponentAccessTokenResponse) Reset()         { *m = ComponentAccessTokenResponse{} }
+func (m *ComponentAccessTokenResponse) String() string { return proto.CompactTextString(m) }
+func (*ComponentAccessTokenResponse) ProtoMessage()    {}
+func (*ComponentAccessTokenResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{4}
+}
+func (m *ComponentAccessTokenResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ComponentAccessTokenResponse.Unmarshal(m, b)
+}
+func (m *ComponentAccessTokenResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ComponentAccessTokenResponse.Marshal(b, m, deterministic)
+}
+func (dst *ComponentAccessTokenResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ComponentAccessTokenResponse.Merge(dst, src)
+}
+func (m *ComponentAccessTokenResponse) XXX_Size() int {
+	return xxx_messageInfo_ComponentAccessTokenResponse.Size(m)
+}
+func (m *ComponentAccessTokenResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ComponentAccessTokenResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ComponentAccessTokenResponse proto.InternalMessageInfo
+
+func (m *ComponentAccessTokenResponse) GetComponentAccessToken() string {
+	if m != nil {
+		return m.ComponentAccessToken
+	}
+	return ""
+}
+
+func (m *ComponentAccessTokenResponse) GetExpiresIn() int32 {
+	if m != nil {
+		return m.ExpiresIn
+	}
+	return 0
+}
+
+// PreAuthCodeRequest **************************************
+type ComponentAppidRequest struct {
+	ComponentAppid       string   `protobuf:"bytes,1,opt,name=componentAppid,proto3" json:"componentAppid,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ComponentAppidRequest) Reset()         { *m = ComponentAppidRequest{} }
+func (m *ComponentAppidRequest) String() string { return proto.CompactTextString(m) }
+func (*ComponentAppidRequest) ProtoMessage()    {}
+func (*ComponentAppidRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{5}
+}
+func (m *ComponentAppidRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ComponentAppidRequest.Unmarshal(m, b)
+}
+func (m *ComponentAppidRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ComponentAppidRequest.Marshal(b, m, deterministic)
+}
+func (dst *ComponentAppidRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ComponentAppidRequest.Merge(dst, src)
+}
+func (m *ComponentAppidRequest) XXX_Size() int {
+	return xxx_messageInfo_ComponentAppidRequest.Size(m)
+}
+func (m *ComponentAppidRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ComponentAppidRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ComponentAppidRequest proto.InternalMessageInfo
+
+func (m *ComponentAppidRequest) GetComponentAppid() string {
+	if m != nil {
+		return m.ComponentAppid
+	}
+	return ""
+}
+
+// PreAuthCodeResponse
+type PreAuthCodeResponse struct {
+	PreAuthCode          string   `protobuf:"bytes,1,opt,name=preAuthCode,proto3" json:"preAuthCode,omitempty"`
+	ExpiresIn            int32    `protobuf:"varint,2,opt,name=expiresIn,proto3" json:"expiresIn,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *PreAuthCodeResponse) Reset()         { *m = PreAuthCodeResponse{} }
+func (m *PreAuthCodeResponse) String() string { return proto.CompactTextString(m) }
+func (*PreAuthCodeResponse) ProtoMessage()    {}
+func (*PreAuthCodeResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{6}
+}
+func (m *PreAuthCodeResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PreAuthCodeResponse.Unmarshal(m, b)
+}
+func (m *PreAuthCodeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PreAuthCodeResponse.Marshal(b, m, deterministic)
+}
+func (dst *PreAuthCodeResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PreAuthCodeResponse.Merge(dst, src)
+}
+func (m *PreAuthCodeResponse) XXX_Size() int {
+	return xxx_messageInfo_PreAuthCodeResponse.Size(m)
+}
+func (m *PreAuthCodeResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_PreAuthCodeResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PreAuthCodeResponse proto.InternalMessageInfo
+
+func (m *PreAuthCodeResponse) GetPreAuthCode() string {
+	if m != nil {
+		return m.PreAuthCode
+	}
+	return ""
+}
+
+func (m *PreAuthCodeResponse) GetExpiresIn() int32 {
+	if m != nil {
+		return m.ExpiresIn
+	}
+	return 0
+}
+
+// AuthorizationInfoRequest *********************************
+type AuthorizationInfoRequest struct {
+	ComponentAppid       string   `protobuf:"bytes,1,opt,name=componentAppid,proto3" json:"componentAppid,omitempty"`
+	AuthorizationCode    string   `protobuf:"bytes,2,opt,name=authorizationCode,proto3" json:"authorizationCode,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *AuthorizationInfoRequest) Reset()         { *m = AuthorizationInfoRequest{} }
+func (m *AuthorizationInfoRequest) String() string { return proto.CompactTextString(m) }
+func (*AuthorizationInfoRequest) ProtoMessage()    {}
+func (*AuthorizationInfoRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{7}
+}
+func (m *AuthorizationInfoRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AuthorizationInfoRequest.Unmarshal(m, b)
+}
+func (m *AuthorizationInfoRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AuthorizationInfoRequest.Marshal(b, m, deterministic)
+}
+func (dst *AuthorizationInfoRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AuthorizationInfoRequest.Merge(dst, src)
+}
+func (m *AuthorizationInfoRequest) XXX_Size() int {
+	return xxx_messageInfo_AuthorizationInfoRequest.Size(m)
+}
+func (m *AuthorizationInfoRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_AuthorizationInfoRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AuthorizationInfoRequest proto.InternalMessageInfo
+
+func (m *AuthorizationInfoRequest) GetComponentAppid() string {
+	if m != nil {
+		return m.ComponentAppid
+	}
+	return ""
+}
+
+func (m *AuthorizationInfoRequest) GetAuthorizationCode() string {
+	if m != nil {
+		return m.AuthorizationCode
+	}
+	return ""
+}
+
+// AuthorizationInfoResponse
+type AuthorizationInfoResponse struct {
+	AuthorizationInfo    *AuthorizationInfo `protobuf:"bytes,1,opt,name=authorizationInfo,proto3" json:"authorizationInfo,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
+}
+
+func (m *AuthorizationInfoResponse) Reset()         { *m = AuthorizationInfoResponse{} }
+func (m *AuthorizationInfoResponse) String() string { return proto.CompactTextString(m) }
+func (*AuthorizationInfoResponse) ProtoMessage()    {}
+func (*AuthorizationInfoResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{8}
+}
+func (m *AuthorizationInfoResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AuthorizationInfoResponse.Unmarshal(m, b)
+}
+func (m *AuthorizationInfoResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AuthorizationInfoResponse.Marshal(b, m, deterministic)
+}
+func (dst *AuthorizationInfoResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AuthorizationInfoResponse.Merge(dst, src)
+}
+func (m *AuthorizationInfoResponse) XXX_Size() int {
+	return xxx_messageInfo_AuthorizationInfoResponse.Size(m)
+}
+func (m *AuthorizationInfoResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_AuthorizationInfoResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AuthorizationInfoResponse proto.InternalMessageInfo
+
+func (m *AuthorizationInfoResponse) GetAuthorizationInfo() *AuthorizationInfo {
+	if m != nil {
+		return m.AuthorizationInfo
+	}
+	return nil
+}
+
+type AuthorizationInfo struct {
+	AuthorizerAppid        string               `protobuf:"bytes,1,opt,name=authorizerAppid,proto3" json:"authorizerAppid,omitempty"`
+	AuthorizerAccessToken  string               `protobuf:"bytes,2,opt,name=authorizerAccessToken,proto3" json:"authorizerAccessToken,omitempty"`
+	ExpiresIn              int32                `protobuf:"varint,3,opt,name=expiresIn,proto3" json:"expiresIn,omitempty"`
+	AuthorizerRefreshToken string               `protobuf:"bytes,4,opt,name=authorizerRefreshToken,proto3" json:"authorizerRefreshToken,omitempty"`
+	FuncInfo               []*FuncscopeCategory `protobuf:"bytes,5,rep,name=funcInfo,proto3" json:"funcInfo,omitempty"`
+	XXX_NoUnkeyedLiteral   struct{}             `json:"-"`
+	XXX_unrecognized       []byte               `json:"-"`
+	XXX_sizecache          int32                `json:"-"`
+}
+
+func (m *AuthorizationInfo) Reset()         { *m = AuthorizationInfo{} }
+func (m *AuthorizationInfo) String() string { return proto.CompactTextString(m) }
+func (*AuthorizationInfo) ProtoMessage()    {}
+func (*AuthorizationInfo) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{9}
+}
+func (m *AuthorizationInfo) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AuthorizationInfo.Unmarshal(m, b)
+}
+func (m *AuthorizationInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AuthorizationInfo.Marshal(b, m, deterministic)
+}
+func (dst *AuthorizationInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AuthorizationInfo.Merge(dst, src)
+}
+func (m *AuthorizationInfo) XXX_Size() int {
+	return xxx_messageInfo_AuthorizationInfo.Size(m)
+}
+func (m *AuthorizationInfo) XXX_DiscardUnknown() {
+	xxx_messageInfo_AuthorizationInfo.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AuthorizationInfo proto.InternalMessageInfo
+
+func (m *AuthorizationInfo) GetAuthorizerAppid() string {
+	if m != nil {
+		return m.AuthorizerAppid
+	}
+	return ""
+}
+
+func (m *AuthorizationInfo) GetAuthorizerAccessToken() string {
+	if m != nil {
+		return m.AuthorizerAccessToken
+	}
+	return ""
+}
+
+func (m *AuthorizationInfo) GetExpiresIn() int32 {
+	if m != nil {
+		return m.ExpiresIn
+	}
+	return 0
+}
+
+func (m *AuthorizationInfo) GetAuthorizerRefreshToken() string {
+	if m != nil {
+		return m.AuthorizerRefreshToken
+	}
+	return ""
+}
+
+func (m *AuthorizationInfo) GetFuncInfo() []*FuncscopeCategory {
+	if m != nil {
+		return m.FuncInfo
+	}
+	return nil
+}
+
+type FuncscopeCategory struct {
+	FuncscopeCategory    *ServiceTypeInfo `protobuf:"bytes,1,opt,name=funcscopeCategory,proto3" json:"funcscopeCategory,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
+}
+
+func (m *FuncscopeCategory) Reset()         { *m = FuncscopeCategory{} }
+func (m *FuncscopeCategory) String() string { return proto.CompactTextString(m) }
+func (*FuncscopeCategory) ProtoMessage()    {}
+func (*FuncscopeCategory) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{10}
+}
+func (m *FuncscopeCategory) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FuncscopeCategory.Unmarshal(m, b)
+}
+func (m *FuncscopeCategory) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FuncscopeCategory.Marshal(b, m, deterministic)
+}
+func (dst *FuncscopeCategory) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FuncscopeCategory.Merge(dst, src)
+}
+func (m *FuncscopeCategory) XXX_Size() int {
+	return xxx_messageInfo_FuncscopeCategory.Size(m)
+}
+func (m *FuncscopeCategory) XXX_DiscardUnknown() {
+	xxx_messageInfo_FuncscopeCategory.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_FuncscopeCategory proto.InternalMessageInfo
+
+func (m *FuncscopeCategory) GetFuncscopeCategory() *ServiceTypeInfo {
+	if m != nil {
+		return m.FuncscopeCategory
+	}
+	return nil
+}
+
+// RefreshAuthorizerAccessTokenRequest *************************
+type RefreshAuthorizerAccessTokenRequest struct {
+	ComponentAppid         string   `protobuf:"bytes,1,opt,name=componentAppid,proto3" json:"componentAppid,omitempty"`
+	AuthorizerAppid        string   `protobuf:"bytes,2,opt,name=authorizerAppid,proto3" json:"authorizerAppid,omitempty"`
+	AuthorizerRefreshToken string   `protobuf:"bytes,3,opt,name=authorizerRefreshToken,proto3" json:"authorizerRefreshToken,omitempty"`
+	XXX_NoUnkeyedLiteral   struct{} `json:"-"`
+	XXX_unrecognized       []byte   `json:"-"`
+	XXX_sizecache          int32    `json:"-"`
+}
+
+func (m *RefreshAuthorizerAccessTokenRequest) Reset()         { *m = RefreshAuthorizerAccessTokenRequest{} }
+func (m *RefreshAuthorizerAccessTokenRequest) String() string { return proto.CompactTextString(m) }
+func (*RefreshAuthorizerAccessTokenRequest) ProtoMessage()    {}
+func (*RefreshAuthorizerAccessTokenRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{11}
+}
+func (m *RefreshAuthorizerAccessTokenRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RefreshAuthorizerAccessTokenRequest.Unmarshal(m, b)
+}
+func (m *RefreshAuthorizerAccessTokenRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RefreshAuthorizerAccessTokenRequest.Marshal(b, m, deterministic)
+}
+func (dst *RefreshAuthorizerAccessTokenRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RefreshAuthorizerAccessTokenRequest.Merge(dst, src)
+}
+func (m *RefreshAuthorizerAccessTokenRequest) XXX_Size() int {
+	return xxx_messageInfo_RefreshAuthorizerAccessTokenRequest.Size(m)
+}
+func (m *RefreshAuthorizerAccessTokenRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_RefreshAuthorizerAccessTokenRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RefreshAuthorizerAccessTokenRequest proto.InternalMessageInfo
+
+func (m *RefreshAuthorizerAccessTokenRequest) GetComponentAppid() string {
+	if m != nil {
+		return m.ComponentAppid
+	}
+	return ""
+}
+
+func (m *RefreshAuthorizerAccessTokenRequest) GetAuthorizerAppid() string {
+	if m != nil {
+		return m.AuthorizerAppid
+	}
+	return ""
+}
+
+func (m *RefreshAuthorizerAccessTokenRequest) GetAuthorizerRefreshToken() string {
+	if m != nil {
+		return m.AuthorizerRefreshToken
+	}
+	return ""
+}
+
+type RefreshAuthorizerAccessTokenResponse struct {
+	AuthorizerAccessToken  string   `protobuf:"bytes,1,opt,name=authorizerAccessToken,proto3" json:"authorizerAccessToken,omitempty"`
+	ExpiresIn              int32    `protobuf:"varint,2,opt,name=expiresIn,proto3" json:"expiresIn,omitempty"`
+	AuthorizerRefreshToken string   `protobuf:"bytes,3,opt,name=authorizerRefreshToken,proto3" json:"authorizerRefreshToken,omitempty"`
+	XXX_NoUnkeyedLiteral   struct{} `json:"-"`
+	XXX_unrecognized       []byte   `json:"-"`
+	XXX_sizecache          int32    `json:"-"`
+}
+
+func (m *RefreshAuthorizerAccessTokenResponse) Reset()         { *m = RefreshAuthorizerAccessTokenResponse{} }
+func (m *RefreshAuthorizerAccessTokenResponse) String() string { return proto.CompactTextString(m) }
+func (*RefreshAuthorizerAccessTokenResponse) ProtoMessage()    {}
+func (*RefreshAuthorizerAccessTokenResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{12}
+}
+func (m *RefreshAuthorizerAccessTokenResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RefreshAuthorizerAccessTokenResponse.Unmarshal(m, b)
+}
+func (m *RefreshAuthorizerAccessTokenResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RefreshAuthorizerAccessTokenResponse.Marshal(b, m, deterministic)
+}
+func (dst *RefreshAuthorizerAccessTokenResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RefreshAuthorizerAccessTokenResponse.Merge(dst, src)
+}
+func (m *RefreshAuthorizerAccessTokenResponse) XXX_Size() int {
+	return xxx_messageInfo_RefreshAuthorizerAccessTokenResponse.Size(m)
+}
+func (m *RefreshAuthorizerAccessTokenResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_RefreshAuthorizerAccessTokenResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RefreshAuthorizerAccessTokenResponse proto.InternalMessageInfo
+
+func (m *RefreshAuthorizerAccessTokenResponse) GetAuthorizerAccessToken() string {
+	if m != nil {
+		return m.AuthorizerAccessToken
+	}
+	return ""
+}
+
+func (m *RefreshAuthorizerAccessTokenResponse) GetExpiresIn() int32 {
+	if m != nil {
+		return m.ExpiresIn
+	}
+	return 0
+}
+
+func (m *RefreshAuthorizerAccessTokenResponse) GetAuthorizerRefreshToken() string {
+	if m != nil {
+		return m.AuthorizerRefreshToken
+	}
+	return ""
+}
+
+// AuthorizerInfoRequest *************************************
+type AuthorizerInfoRequest struct {
+	ComponentAppid       string   `protobuf:"bytes,1,opt,name=componentAppid,proto3" json:"componentAppid,omitempty"`
+	AuthorizerAppid      string   `protobuf:"bytes,2,opt,name=authorizerAppid,proto3" json:"authorizerAppid,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *AuthorizerInfoRequest) Reset()         { *m = AuthorizerInfoRequest{} }
+func (m *AuthorizerInfoRequest) String() string { return proto.CompactTextString(m) }
+func (*AuthorizerInfoRequest) ProtoMessage()    {}
+func (*AuthorizerInfoRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{13}
+}
+func (m *AuthorizerInfoRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AuthorizerInfoRequest.Unmarshal(m, b)
+}
+func (m *AuthorizerInfoRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AuthorizerInfoRequest.Marshal(b, m, deterministic)
+}
+func (dst *AuthorizerInfoRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AuthorizerInfoRequest.Merge(dst, src)
+}
+func (m *AuthorizerInfoRequest) XXX_Size() int {
+	return xxx_messageInfo_AuthorizerInfoRequest.Size(m)
+}
+func (m *AuthorizerInfoRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_AuthorizerInfoRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AuthorizerInfoRequest proto.InternalMessageInfo
+
+func (m *AuthorizerInfoRequest) GetComponentAppid() string {
+	if m != nil {
+		return m.ComponentAppid
+	}
+	return ""
+}
+
+func (m *AuthorizerInfoRequest) GetAuthorizerAppid() string {
+	if m != nil {
+		return m.AuthorizerAppid
+	}
+	return ""
+}
+
+type AuthorizerInfoResponse struct {
+	AuthorizerInfo       *AuthorizerInfo    `protobuf:"bytes,1,opt,name=authorizerInfo,proto3" json:"authorizerInfo,omitempty"`
+	AuthorizationInfo    *AuthorizationInfo `protobuf:"bytes,2,opt,name=authorizationInfo,proto3" json:"authorizationInfo,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
+}
+
+func (m *AuthorizerInfoResponse) Reset()         { *m = AuthorizerInfoResponse{} }
+func (m *AuthorizerInfoResponse) String() string { return proto.CompactTextString(m) }
+func (*AuthorizerInfoResponse) ProtoMessage()    {}
+func (*AuthorizerInfoResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{14}
+}
+func (m *AuthorizerInfoResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AuthorizerInfoResponse.Unmarshal(m, b)
+}
+func (m *AuthorizerInfoResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AuthorizerInfoResponse.Marshal(b, m, deterministic)
+}
+func (dst *AuthorizerInfoResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AuthorizerInfoResponse.Merge(dst, src)
+}
+func (m *AuthorizerInfoResponse) XXX_Size() int {
+	return xxx_messageInfo_AuthorizerInfoResponse.Size(m)
+}
+func (m *AuthorizerInfoResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_AuthorizerInfoResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AuthorizerInfoResponse proto.InternalMessageInfo
+
+func (m *AuthorizerInfoResponse) GetAuthorizerInfo() *AuthorizerInfo {
+	if m != nil {
+		return m.AuthorizerInfo
+	}
+	return nil
+}
+
+func (m *AuthorizerInfoResponse) GetAuthorizationInfo() *AuthorizationInfo {
+	if m != nil {
+		return m.AuthorizationInfo
+	}
+	return nil
+}
+
+type AuthorizerInfo struct {
+	NickName             string           `protobuf:"bytes,1,opt,name=nickName,proto3" json:"nickName,omitempty"`
+	HeadImg              string           `protobuf:"bytes,2,opt,name=headImg,proto3" json:"headImg,omitempty"`
+	ServiceTypeInfo      *ServiceTypeInfo `protobuf:"bytes,3,opt,name=serviceTypeInfo,proto3" json:"serviceTypeInfo,omitempty"`
+	VerifyTypeInfo       *ServiceTypeInfo `protobuf:"bytes,4,opt,name=verifyTypeInfo,proto3" json:"verifyTypeInfo,omitempty"`
+	UserName             string           `protobuf:"bytes,5,opt,name=userName,proto3" json:"userName,omitempty"`
+	PrincipalName        string           `protobuf:"bytes,6,opt,name=principalName,proto3" json:"principalName,omitempty"`
+	BusinessInfo         *BusinessInfo    `protobuf:"bytes,7,opt,name=businessInfo,proto3" json:"businessInfo,omitempty"`
+	Alias                string           `protobuf:"bytes,8,opt,name=alias,proto3" json:"alias,omitempty"`
+	QrcodeUrl            string           `protobuf:"bytes,9,opt,name=qrcodeUrl,proto3" json:"qrcodeUrl,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
+}
+
+func (m *AuthorizerInfo) Reset()         { *m = AuthorizerInfo{} }
+func (m *AuthorizerInfo) String() string { return proto.CompactTextString(m) }
+func (*AuthorizerInfo) ProtoMessage()    {}
+func (*AuthorizerInfo) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{15}
+}
+func (m *AuthorizerInfo) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AuthorizerInfo.Unmarshal(m, b)
+}
+func (m *AuthorizerInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AuthorizerInfo.Marshal(b, m, deterministic)
+}
+func (dst *AuthorizerInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AuthorizerInfo.Merge(dst, src)
+}
+func (m *AuthorizerInfo) XXX_Size() int {
+	return xxx_messageInfo_AuthorizerInfo.Size(m)
+}
+func (m *AuthorizerInfo) XXX_DiscardUnknown() {
+	xxx_messageInfo_AuthorizerInfo.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AuthorizerInfo proto.InternalMessageInfo
+
+func (m *AuthorizerInfo) GetNickName() string {
+	if m != nil {
+		return m.NickName
+	}
+	return ""
+}
+
+func (m *AuthorizerInfo) GetHeadImg() string {
+	if m != nil {
+		return m.HeadImg
+	}
+	return ""
+}
+
+func (m *AuthorizerInfo) GetServiceTypeInfo() *ServiceTypeInfo {
+	if m != nil {
+		return m.ServiceTypeInfo
+	}
+	return nil
+}
+
+func (m *AuthorizerInfo) GetVerifyTypeInfo() *ServiceTypeInfo {
+	if m != nil {
+		return m.VerifyTypeInfo
+	}
+	return nil
+}
+
+func (m *AuthorizerInfo) GetUserName() string {
+	if m != nil {
+		return m.UserName
+	}
+	return ""
+}
+
+func (m *AuthorizerInfo) GetPrincipalName() string {
+	if m != nil {
+		return m.PrincipalName
+	}
+	return ""
+}
+
+func (m *AuthorizerInfo) GetBusinessInfo() *BusinessInfo {
+	if m != nil {
+		return m.BusinessInfo
+	}
+	return nil
+}
+
+func (m *AuthorizerInfo) GetAlias() string {
+	if m != nil {
+		return m.Alias
+	}
+	return ""
+}
+
+func (m *AuthorizerInfo) GetQrcodeUrl() string {
+	if m != nil {
+		return m.QrcodeUrl
+	}
+	return ""
+}
+
+type MiniAppAuthorizerInfo struct {
+	NickName             string           `protobuf:"bytes,1,opt,name=nickName,proto3" json:"nickName,omitempty"`
+	HeadImg              string           `protobuf:"bytes,2,opt,name=headImg,proto3" json:"headImg,omitempty"`
+	ServiceTypeInfo      *ServiceTypeInfo `protobuf:"bytes,3,opt,name=serviceTypeInfo,proto3" json:"serviceTypeInfo,omitempty"`
+	VerifyTypeInfo       *ServiceTypeInfo `protobuf:"bytes,4,opt,name=verifyTypeInfo,proto3" json:"verifyTypeInfo,omitempty"`
+	UserName             string           `protobuf:"bytes,5,opt,name=userName,proto3" json:"userName,omitempty"`
+	PrincipalName        string           `protobuf:"bytes,6,opt,name=principalName,proto3" json:"principalName,omitempty"`
+	BusinessInfo         *BusinessInfo    `protobuf:"bytes,7,opt,name=businessInfo,proto3" json:"businessInfo,omitempty"`
+	QrcodeUrl            string           `protobuf:"bytes,9,opt,name=qrcodeUrl,proto3" json:"qrcodeUrl,omitempty"`
+	Signature            string           `protobuf:"bytes,10,opt,name=signature,proto3" json:"signature,omitempty"`
+	MiniProgramInfo      *MiniProgramInfo `protobuf:"bytes,11,opt,name=miniProgramInfo,proto3" json:"miniProgramInfo,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
+}
+
+func (m *MiniAppAuthorizerInfo) Reset()         { *m = MiniAppAuthorizerInfo{} }
+func (m *MiniAppAuthorizerInfo) String() string { return proto.CompactTextString(m) }
+func (*MiniAppAuthorizerInfo) ProtoMessage()    {}
+func (*MiniAppAuthorizerInfo) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{16}
+}
+func (m *MiniAppAuthorizerInfo) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MiniAppAuthorizerInfo.Unmarshal(m, b)
+}
+func (m *MiniAppAuthorizerInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MiniAppAuthorizerInfo.Marshal(b, m, deterministic)
+}
+func (dst *MiniAppAuthorizerInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MiniAppAuthorizerInfo.Merge(dst, src)
+}
+func (m *MiniAppAuthorizerInfo) XXX_Size() int {
+	return xxx_messageInfo_MiniAppAuthorizerInfo.Size(m)
+}
+func (m *MiniAppAuthorizerInfo) XXX_DiscardUnknown() {
+	xxx_messageInfo_MiniAppAuthorizerInfo.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MiniAppAuthorizerInfo proto.InternalMessageInfo
+
+func (m *MiniAppAuthorizerInfo) GetNickName() string {
+	if m != nil {
+		return m.NickName
+	}
+	return ""
+}
+
+func (m *MiniAppAuthorizerInfo) GetHeadImg() string {
+	if m != nil {
+		return m.HeadImg
+	}
+	return ""
+}
+
+func (m *MiniAppAuthorizerInfo) GetServiceTypeInfo() *ServiceTypeInfo {
+	if m != nil {
+		return m.ServiceTypeInfo
+	}
+	return nil
+}
+
+func (m *MiniAppAuthorizerInfo) GetVerifyTypeInfo() *ServiceTypeInfo {
+	if m != nil {
+		return m.VerifyTypeInfo
+	}
+	return nil
+}
+
+func (m *MiniAppAuthorizerInfo) GetUserName() string {
+	if m != nil {
+		return m.UserName
+	}
+	return ""
+}
+
+func (m *MiniAppAuthorizerInfo) GetPrincipalName() string {
+	if m != nil {
+		return m.PrincipalName
+	}
+	return ""
+}
+
+func (m *MiniAppAuthorizerInfo) GetBusinessInfo() *BusinessInfo {
+	if m != nil {
+		return m.BusinessInfo
+	}
+	return nil
+}
+
+func (m *MiniAppAuthorizerInfo) GetQrcodeUrl() string {
+	if m != nil {
+		return m.QrcodeUrl
+	}
+	return ""
+}
+
+func (m *MiniAppAuthorizerInfo) GetSignature() string {
+	if m != nil {
+		return m.Signature
+	}
+	return ""
+}
+
+func (m *MiniAppAuthorizerInfo) GetMiniProgramInfo() *MiniProgramInfo {
+	if m != nil {
+		return m.MiniProgramInfo
+	}
+	return nil
+}
+
+type MiniProgramInfo struct {
+	Network              *MiniProgramInfoNetwork `protobuf:"bytes,1,opt,name=network,proto3" json:"network,omitempty"`
+	Categories           []*Categorie            `protobuf:"bytes,2,rep,name=categories,proto3" json:"categories,omitempty"`
+	VisitStatus          int32                   `protobuf:"varint,3,opt,name=visitStatus,proto3" json:"visitStatus,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
+	XXX_unrecognized     []byte                  `json:"-"`
+	XXX_sizecache        int32                   `json:"-"`
+}
+
+func (m *MiniProgramInfo) Reset()         { *m = MiniProgramInfo{} }
+func (m *MiniProgramInfo) String() string { return proto.CompactTextString(m) }
+func (*MiniProgramInfo) ProtoMessage()    {}
+func (*MiniProgramInfo) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{17}
+}
+func (m *MiniProgramInfo) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MiniProgramInfo.Unmarshal(m, b)
+}
+func (m *MiniProgramInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MiniProgramInfo.Marshal(b, m, deterministic)
+}
+func (dst *MiniProgramInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MiniProgramInfo.Merge(dst, src)
+}
+func (m *MiniProgramInfo) XXX_Size() int {
+	return xxx_messageInfo_MiniProgramInfo.Size(m)
+}
+func (m *MiniProgramInfo) XXX_DiscardUnknown() {
+	xxx_messageInfo_MiniProgramInfo.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MiniProgramInfo proto.InternalMessageInfo
+
+func (m *MiniProgramInfo) GetNetwork() *MiniProgramInfoNetwork {
+	if m != nil {
+		return m.Network
+	}
+	return nil
+}
+
+func (m *MiniProgramInfo) GetCategories() []*Categorie {
+	if m != nil {
+		return m.Categories
+	}
+	return nil
+}
+
+func (m *MiniProgramInfo) GetVisitStatus() int32 {
+	if m != nil {
+		return m.VisitStatus
+	}
+	return 0
+}
+
+type MiniProgramInfoNetwork struct {
+	RequestDomain        []string `protobuf:"bytes,1,rep,name=requestDomain,proto3" json:"requestDomain,omitempty"`
+	WsRequestDomain      []string `protobuf:"bytes,2,rep,name=wsRequestDomain,proto3" json:"wsRequestDomain,omitempty"`
+	UploadDomain         []string `protobuf:"bytes,3,rep,name=uploadDomain,proto3" json:"uploadDomain,omitempty"`
+	DownloadDomain       []string `protobuf:"bytes,4,rep,name=downloadDomain,proto3" json:"downloadDomain,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *MiniProgramInfoNetwork) Reset()         { *m = MiniProgramInfoNetwork{} }
+func (m *MiniProgramInfoNetwork) String() string { return proto.CompactTextString(m) }
+func (*MiniProgramInfoNetwork) ProtoMessage()    {}
+func (*MiniProgramInfoNetwork) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{18}
+}
+func (m *MiniProgramInfoNetwork) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MiniProgramInfoNetwork.Unmarshal(m, b)
+}
+func (m *MiniProgramInfoNetwork) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MiniProgramInfoNetwork.Marshal(b, m, deterministic)
+}
+func (dst *MiniProgramInfoNetwork) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MiniProgramInfoNetwork.Merge(dst, src)
+}
+func (m *MiniProgramInfoNetwork) XXX_Size() int {
+	return xxx_messageInfo_MiniProgramInfoNetwork.Size(m)
+}
+func (m *MiniProgramInfoNetwork) XXX_DiscardUnknown() {
+	xxx_messageInfo_MiniProgramInfoNetwork.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MiniProgramInfoNetwork proto.InternalMessageInfo
+
+func (m *MiniProgramInfoNetwork) GetRequestDomain() []string {
+	if m != nil {
+		return m.RequestDomain
+	}
+	return nil
+}
+
+func (m *MiniProgramInfoNetwork) GetWsRequestDomain() []string {
+	if m != nil {
+		return m.WsRequestDomain
+	}
+	return nil
+}
+
+func (m *MiniProgramInfoNetwork) GetUploadDomain() []string {
+	if m != nil {
+		return m.UploadDomain
+	}
+	return nil
+}
+
+func (m *MiniProgramInfoNetwork) GetDownloadDomain() []string {
+	if m != nil {
+		return m.DownloadDomain
+	}
+	return nil
+}
+
+type Categorie struct {
+	First                string   `protobuf:"bytes,1,opt,name=first,proto3" json:"first,omitempty"`
+	Second               string   `protobuf:"bytes,2,opt,name=second,proto3" json:"second,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Categorie) Reset()         { *m = Categorie{} }
+func (m *Categorie) String() string { return proto.CompactTextString(m) }
+func (*Categorie) ProtoMessage()    {}
+func (*Categorie) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{19}
+}
+func (m *Categorie) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Categorie.Unmarshal(m, b)
+}
+func (m *Categorie) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Categorie.Marshal(b, m, deterministic)
+}
+func (dst *Categorie) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Categorie.Merge(dst, src)
+}
+func (m *Categorie) XXX_Size() int {
+	return xxx_messageInfo_Categorie.Size(m)
+}
+func (m *Categorie) XXX_DiscardUnknown() {
+	xxx_messageInfo_Categorie.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Categorie proto.InternalMessageInfo
+
+func (m *Categorie) GetFirst() string {
+	if m != nil {
+		return m.First
+	}
+	return ""
+}
+
+func (m *Categorie) GetSecond() string {
+	if m != nil {
+		return m.Second
+	}
+	return ""
+}
+
+type ServiceTypeInfo struct {
+	Id                   int32    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ServiceTypeInfo) Reset()         { *m = ServiceTypeInfo{} }
+func (m *ServiceTypeInfo) String() string { return proto.CompactTextString(m) }
+func (*ServiceTypeInfo) ProtoMessage()    {}
+func (*ServiceTypeInfo) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{20}
+}
+func (m *ServiceTypeInfo) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ServiceTypeInfo.Unmarshal(m, b)
+}
+func (m *ServiceTypeInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ServiceTypeInfo.Marshal(b, m, deterministic)
+}
+func (dst *ServiceTypeInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ServiceTypeInfo.Merge(dst, src)
+}
+func (m *ServiceTypeInfo) XXX_Size() int {
+	return xxx_messageInfo_ServiceTypeInfo.Size(m)
+}
+func (m *ServiceTypeInfo) XXX_DiscardUnknown() {
+	xxx_messageInfo_ServiceTypeInfo.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ServiceTypeInfo proto.InternalMessageInfo
+
+func (m *ServiceTypeInfo) GetId() int32 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+type BusinessInfo struct {
+	OpenStore            int32    `protobuf:"varint,1,opt,name=openStore,proto3" json:"openStore,omitempty"`
+	OpenScan             int32    `protobuf:"varint,2,opt,name=openScan,proto3" json:"openScan,omitempty"`
+	OpenPay              int32    `protobuf:"varint,3,opt,name=openPay,proto3" json:"openPay,omitempty"`
+	OpenCard             int32    `protobuf:"varint,4,opt,name=openCard,proto3" json:"openCard,omitempty"`
+	OpenShake            int32    `protobuf:"varint,5,opt,name=openShake,proto3" json:"openShake,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *BusinessInfo) Reset()         { *m = BusinessInfo{} }
+func (m *BusinessInfo) String() string { return proto.CompactTextString(m) }
+func (*BusinessInfo) ProtoMessage()    {}
+func (*BusinessInfo) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{21}
+}
+func (m *BusinessInfo) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BusinessInfo.Unmarshal(m, b)
+}
+func (m *BusinessInfo) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BusinessInfo.Marshal(b, m, deterministic)
+}
+func (dst *BusinessInfo) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BusinessInfo.Merge(dst, src)
+}
+func (m *BusinessInfo) XXX_Size() int {
+	return xxx_messageInfo_BusinessInfo.Size(m)
+}
+func (m *BusinessInfo) XXX_DiscardUnknown() {
+	xxx_messageInfo_BusinessInfo.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BusinessInfo proto.InternalMessageInfo
+
+func (m *BusinessInfo) GetOpenStore() int32 {
+	if m != nil {
+		return m.OpenStore
+	}
+	return 0
+}
+
+func (m *BusinessInfo) GetOpenScan() int32 {
+	if m != nil {
+		return m.OpenScan
+	}
+	return 0
+}
+
+func (m *BusinessInfo) GetOpenPay() int32 {
+	if m != nil {
+		return m.OpenPay
+	}
+	return 0
+}
+
+func (m *BusinessInfo) GetOpenCard() int32 {
+	if m != nil {
+		return m.OpenCard
+	}
+	return 0
+}
+
+func (m *BusinessInfo) GetOpenShake() int32 {
+	if m != nil {
+		return m.OpenShake
+	}
+	return 0
+}
+
+type AuthorizerOptionRequest struct {
+	ComponentAppid       string   `protobuf:"bytes,1,opt,name=componentAppid,proto3" json:"componentAppid,omitempty"`
+	AuthorizerAppid      string   `protobuf:"bytes,2,opt,name=authorizerAppid,proto3" json:"authorizerAppid,omitempty"`
+	OptionName           string   `protobuf:"bytes,3,opt,name=optionName,proto3" json:"optionName,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *AuthorizerOptionRequest) Reset()         { *m = AuthorizerOptionRequest{} }
+func (m *AuthorizerOptionRequest) String() string { return proto.CompactTextString(m) }
+func (*AuthorizerOptionRequest) ProtoMessage()    {}
+func (*AuthorizerOptionRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{22}
+}
+func (m *AuthorizerOptionRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AuthorizerOptionRequest.Unmarshal(m, b)
+}
+func (m *AuthorizerOptionRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AuthorizerOptionRequest.Marshal(b, m, deterministic)
+}
+func (dst *AuthorizerOptionRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AuthorizerOptionRequest.Merge(dst, src)
+}
+func (m *AuthorizerOptionRequest) XXX_Size() int {
+	return xxx_messageInfo_AuthorizerOptionRequest.Size(m)
+}
+func (m *AuthorizerOptionRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_AuthorizerOptionRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AuthorizerOptionRequest proto.InternalMessageInfo
+
+func (m *AuthorizerOptionRequest) GetComponentAppid() string {
+	if m != nil {
+		return m.ComponentAppid
+	}
+	return ""
+}
+
+func (m *AuthorizerOptionRequest) GetAuthorizerAppid() string {
+	if m != nil {
+		return m.AuthorizerAppid
+	}
+	return ""
+}
+
+func (m *AuthorizerOptionRequest) GetOptionName() string {
+	if m != nil {
+		return m.OptionName
+	}
+	return ""
+}
+
+type AuthorizerOptionResponse struct {
+	AuthorizerAppid      string   `protobuf:"bytes,1,opt,name=authorizerAppid,proto3" json:"authorizerAppid,omitempty"`
+	OptionName           string   `protobuf:"bytes,2,opt,name=optionName,proto3" json:"optionName,omitempty"`
+	OptionValue          string   `protobuf:"bytes,3,opt,name=optionValue,proto3" json:"optionValue,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *AuthorizerOptionResponse) Reset()         { *m = AuthorizerOptionResponse{} }
+func (m *AuthorizerOptionResponse) String() string { return proto.CompactTextString(m) }
+func (*AuthorizerOptionResponse) ProtoMessage()    {}
+func (*AuthorizerOptionResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{23}
+}
+func (m *AuthorizerOptionResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AuthorizerOptionResponse.Unmarshal(m, b)
+}
+func (m *AuthorizerOptionResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AuthorizerOptionResponse.Marshal(b, m, deterministic)
+}
+func (dst *AuthorizerOptionResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AuthorizerOptionResponse.Merge(dst, src)
+}
+func (m *AuthorizerOptionResponse) XXX_Size() int {
+	return xxx_messageInfo_AuthorizerOptionResponse.Size(m)
+}
+func (m *AuthorizerOptionResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_AuthorizerOptionResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AuthorizerOptionResponse proto.InternalMessageInfo
+
+func (m *AuthorizerOptionResponse) GetAuthorizerAppid() string {
+	if m != nil {
+		return m.AuthorizerAppid
+	}
+	return ""
+}
+
+func (m *AuthorizerOptionResponse) GetOptionName() string {
+	if m != nil {
+		return m.OptionName
+	}
+	return ""
+}
+
+func (m *AuthorizerOptionResponse) GetOptionValue() string {
+	if m != nil {
+		return m.OptionValue
+	}
+	return ""
+}
+
+type SetAuthorizerOptionRequest struct {
+	ComponentAppid       string   `protobuf:"bytes,1,opt,name=componentAppid,proto3" json:"componentAppid,omitempty"`
+	AuthorizerAppid      string   `protobuf:"bytes,2,opt,name=authorizerAppid,proto3" json:"authorizerAppid,omitempty"`
+	OptionName           string   `protobuf:"bytes,3,opt,name=optionName,proto3" json:"optionName,omitempty"`
+	OptionValue          string   `protobuf:"bytes,4,opt,name=optionValue,proto3" json:"optionValue,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SetAuthorizerOptionRequest) Reset()         { *m = SetAuthorizerOptionRequest{} }
+func (m *SetAuthorizerOptionRequest) String() string { return proto.CompactTextString(m) }
+func (*SetAuthorizerOptionRequest) ProtoMessage()    {}
+func (*SetAuthorizerOptionRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{24}
+}
+func (m *SetAuthorizerOptionRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SetAuthorizerOptionRequest.Unmarshal(m, b)
+}
+func (m *SetAuthorizerOptionRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SetAuthorizerOptionRequest.Marshal(b, m, deterministic)
+}
+func (dst *SetAuthorizerOptionRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetAuthorizerOptionRequest.Merge(dst, src)
+}
+func (m *SetAuthorizerOptionRequest) XXX_Size() int {
+	return xxx_messageInfo_SetAuthorizerOptionRequest.Size(m)
+}
+func (m *SetAuthorizerOptionRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetAuthorizerOptionRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SetAuthorizerOptionRequest proto.InternalMessageInfo
+
+func (m *SetAuthorizerOptionRequest) GetComponentAppid() string {
+	if m != nil {
+		return m.ComponentAppid
+	}
+	return ""
+}
+
+func (m *SetAuthorizerOptionRequest) GetAuthorizerAppid() string {
+	if m != nil {
+		return m.AuthorizerAppid
+	}
+	return ""
+}
+
+func (m *SetAuthorizerOptionRequest) GetOptionName() string {
+	if m != nil {
+		return m.OptionName
+	}
+	return ""
+}
+
+func (m *SetAuthorizerOptionRequest) GetOptionValue() string {
+	if m != nil {
+		return m.OptionValue
+	}
+	return ""
+}
+
+type SetAuthorizerOptionResponse struct {
+	Errcode              int32    `protobuf:"varint,1,opt,name=errcode,proto3" json:"errcode,omitempty"`
+	Errmsg               string   `protobuf:"bytes,2,opt,name=errmsg,proto3" json:"errmsg,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SetAuthorizerOptionResponse) Reset()         { *m = SetAuthorizerOptionResponse{} }
+func (m *SetAuthorizerOptionResponse) String() string { return proto.CompactTextString(m) }
+func (*SetAuthorizerOptionResponse) ProtoMessage()    {}
+func (*SetAuthorizerOptionResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{25}
+}
+func (m *SetAuthorizerOptionResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SetAuthorizerOptionResponse.Unmarshal(m, b)
+}
+func (m *SetAuthorizerOptionResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SetAuthorizerOptionResponse.Marshal(b, m, deterministic)
+}
+func (dst *SetAuthorizerOptionResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetAuthorizerOptionResponse.Merge(dst, src)
+}
+func (m *SetAuthorizerOptionResponse) XXX_Size() int {
+	return xxx_messageInfo_SetAuthorizerOptionResponse.Size(m)
+}
+func (m *SetAuthorizerOptionResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetAuthorizerOptionResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SetAuthorizerOptionResponse proto.InternalMessageInfo
+
+func (m *SetAuthorizerOptionResponse) GetErrcode() int32 {
+	if m != nil {
+		return m.Errcode
+	}
+	return 0
+}
+
+func (m *SetAuthorizerOptionResponse) GetErrmsg() string {
+	if m != nil {
+		return m.Errmsg
+	}
+	return ""
+}
+
+type GetAuthURLRequest struct {
+	ComponentAppid       string   `protobuf:"bytes,1,opt,name=componentAppid,proto3" json:"componentAppid,omitempty"`
+	RedirectURL          string   `protobuf:"bytes,2,opt,name=redirectURL,proto3" json:"redirectURL,omitempty"`
+	Tag                  int64    `protobuf:"varint,3,opt,name=tag,proto3" json:"tag,omitempty"`
+	AuthType             string   `protobuf:"bytes,4,opt,name=AuthType,proto3" json:"AuthType,omitempty"`
+	BizAppid             string   `protobuf:"bytes,5,opt,name=bizAppid,proto3" json:"bizAppid,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetAuthURLRequest) Reset()         { *m = GetAuthURLRequest{} }
+func (m *GetAuthURLRequest) String() string { return proto.CompactTextString(m) }
+func (*GetAuthURLRequest) ProtoMessage()    {}
+func (*GetAuthURLRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{26}
+}
+func (m *GetAuthURLRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAuthURLRequest.Unmarshal(m, b)
+}
+func (m *GetAuthURLRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAuthURLRequest.Marshal(b, m, deterministic)
+}
+func (dst *GetAuthURLRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAuthURLRequest.Merge(dst, src)
+}
+func (m *GetAuthURLRequest) XXX_Size() int {
+	return xxx_messageInfo_GetAuthURLRequest.Size(m)
+}
+func (m *GetAuthURLRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAuthURLRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetAuthURLRequest proto.InternalMessageInfo
+
+func (m *GetAuthURLRequest) GetComponentAppid() string {
+	if m != nil {
+		return m.ComponentAppid
+	}
+	return ""
+}
+
+func (m *GetAuthURLRequest) GetRedirectURL() string {
+	if m != nil {
+		return m.RedirectURL
+	}
+	return ""
+}
+
+func (m *GetAuthURLRequest) GetTag() int64 {
+	if m != nil {
+		return m.Tag
+	}
+	return 0
+}
+
+func (m *GetAuthURLRequest) GetAuthType() string {
+	if m != nil {
+		return m.AuthType
+	}
+	return ""
+}
+
+func (m *GetAuthURLRequest) GetBizAppid() string {
+	if m != nil {
+		return m.BizAppid
+	}
+	return ""
+}
+
+type GetAuthURLResponse struct {
+	AuthURL              string   `protobuf:"bytes,1,opt,name=authURL,proto3" json:"authURL,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetAuthURLResponse) Reset()         { *m = GetAuthURLResponse{} }
+func (m *GetAuthURLResponse) String() string { return proto.CompactTextString(m) }
+func (*GetAuthURLResponse) ProtoMessage()    {}
+func (*GetAuthURLResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_wxAuth_a61194b47964af0e, []int{27}
+}
+func (m *GetAuthURLResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAuthURLResponse.Unmarshal(m, b)
+}
+func (m *GetAuthURLResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAuthURLResponse.Marshal(b, m, deterministic)
+}
+func (dst *GetAuthURLResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAuthURLResponse.Merge(dst, src)
+}
+func (m *GetAuthURLResponse) XXX_Size() int {
+	return xxx_messageInfo_GetAuthURLResponse.Size(m)
+}
+func (m *GetAuthURLResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAuthURLResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetAuthURLResponse proto.InternalMessageInfo
+
+func (m *GetAuthURLResponse) GetAuthURL() string {
+	if m != nil {
+		return m.AuthURL
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*WxAuthTicketSaveRequest)(nil), "WxAuthTicketSaveRequest")
 	proto.RegisterType((*WxAuthTicketSaveResponse)(nil), "WxAuthTicketSaveResponse")
-	proto.RegisterType((*WxAuthTicketGetRequest)(nil), "WxAuthTicketGetRequest")
 	proto.RegisterType((*WxAuthTicketGetResponse)(nil), "WxAuthTicketGetResponse")
+	proto.RegisterType((*ComponentAccessTokenRequest)(nil), "ComponentAccessTokenRequest")
+	proto.RegisterType((*ComponentAccessTokenResponse)(nil), "ComponentAccessTokenResponse")
+	proto.RegisterType((*ComponentAppidRequest)(nil), "ComponentAppidRequest")
+	proto.RegisterType((*PreAuthCodeResponse)(nil), "PreAuthCodeResponse")
+	proto.RegisterType((*AuthorizationInfoRequest)(nil), "AuthorizationInfoRequest")
+	proto.RegisterType((*AuthorizationInfoResponse)(nil), "AuthorizationInfoResponse")
+	proto.RegisterType((*AuthorizationInfo)(nil), "AuthorizationInfo")
+	proto.RegisterType((*FuncscopeCategory)(nil), "FuncscopeCategory")
+	proto.RegisterType((*RefreshAuthorizerAccessTokenRequest)(nil), "RefreshAuthorizerAccessTokenRequest")
+	proto.RegisterType((*RefreshAuthorizerAccessTokenResponse)(nil), "RefreshAuthorizerAccessTokenResponse")
+	proto.RegisterType((*AuthorizerInfoRequest)(nil), "AuthorizerInfoRequest")
+	proto.RegisterType((*AuthorizerInfoResponse)(nil), "AuthorizerInfoResponse")
+	proto.RegisterType((*AuthorizerInfo)(nil), "AuthorizerInfo")
+	proto.RegisterType((*MiniAppAuthorizerInfo)(nil), "MiniAppAuthorizerInfo")
+	proto.RegisterType((*MiniProgramInfo)(nil), "MiniProgramInfo")
+	proto.RegisterType((*MiniProgramInfoNetwork)(nil), "MiniProgramInfoNetwork")
+	proto.RegisterType((*Categorie)(nil), "Categorie")
+	proto.RegisterType((*ServiceTypeInfo)(nil), "ServiceTypeInfo")
+	proto.RegisterType((*BusinessInfo)(nil), "BusinessInfo")
+	proto.RegisterType((*AuthorizerOptionRequest)(nil), "AuthorizerOptionRequest")
+	proto.RegisterType((*AuthorizerOptionResponse)(nil), "AuthorizerOptionResponse")
+	proto.RegisterType((*SetAuthorizerOptionRequest)(nil), "SetAuthorizerOptionRequest")
+	proto.RegisterType((*SetAuthorizerOptionResponse)(nil), "SetAuthorizerOptionResponse")
+	proto.RegisterType((*GetAuthURLRequest)(nil), "GetAuthURLRequest")
+	proto.RegisterType((*GetAuthURLResponse)(nil), "GetAuthURLResponse")
 }
 
-func init() { proto.RegisterFile("proto/wxAuth/wxAuth.proto", fileDescriptor_wxAuth_677ce89ad62c4ff2) }
+func init() { proto.RegisterFile("proto/wxAuth/wxAuth.proto", fileDescriptor_wxAuth_a61194b47964af0e) }
 
-var fileDescriptor_wxAuth_677ce89ad62c4ff2 = []byte{
-	// 268 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x92, 0xcd, 0x4a, 0x03, 0x31,
-	0x10, 0xc7, 0x89, 0xfd, 0xd0, 0x9d, 0xe3, 0xa0, 0x36, 0xdd, 0x83, 0x94, 0x3d, 0xf5, 0x14, 0x41,
-	0x3d, 0x0b, 0x05, 0xa1, 0x7a, 0x12, 0xe2, 0xa2, 0xe7, 0x75, 0x9d, 0xea, 0x22, 0xbb, 0x89, 0x9b,
-	0x54, 0xed, 0x33, 0xf8, 0x14, 0xbe, 0xa9, 0x38, 0x59, 0xa5, 0x62, 0xd3, 0x53, 0x32, 0x1f, 0xf9,
-	0xcf, 0xff, 0x97, 0x04, 0xc6, 0xb6, 0x35, 0xde, 0x1c, 0xbf, 0xbd, 0xcf, 0x96, 0xfe, 0xa9, 0x5b,
-	0x14, 0xe7, 0xb2, 0x4f, 0x01, 0xa3, 0x3b, 0x4e, 0xe4, 0x55, 0xf9, 0x4c, 0xfe, 0xa6, 0x78, 0x25,
-	0x4d, 0x2f, 0x4b, 0x72, 0x1e, 0xf7, 0x61, 0x50, 0x58, 0x7b, 0x75, 0x21, 0xc5, 0x44, 0x4c, 0x13,
-	0x1d, 0x02, 0x3c, 0x02, 0x28, 0x5b, 0x2a, 0x3c, 0xe5, 0x55, 0x4d, 0x72, 0x67, 0x22, 0xa6, 0x3d,
-	0xbd, 0x96, 0xc1, 0x14, 0xf6, 0xaa, 0x66, 0x61, 0xf2, 0x95, 0x25, 0xd9, 0xe3, 0x83, 0xbf, 0x31,
-	0x9e, 0xc1, 0x41, 0x69, 0x6a, 0x6b, 0x1a, 0x6a, 0xfc, 0x2d, 0xb5, 0xd5, 0x62, 0x15, 0xa6, 0xca,
-	0x3e, 0x37, 0x6e, 0x2e, 0x66, 0x97, 0x20, 0xff, 0x5b, 0x74, 0xd6, 0x34, 0x8e, 0x10, 0xa1, 0x5f,
-	0x9a, 0x07, 0x62, 0x8b, 0x03, 0xcd, 0x7b, 0x94, 0xb0, 0x5b, 0x93, 0x73, 0xc5, 0x63, 0xb0, 0x97,
-	0xe8, 0x9f, 0x30, 0x53, 0x70, 0xb8, 0xae, 0x34, 0x27, 0xbf, 0x95, 0x35, 0xbb, 0xfe, 0x7b, 0x39,
-	0xdc, 0xdf, 0x0d, 0x8e, 0xa2, 0x88, 0x2d, 0x28, 0x27, 0x1f, 0x02, 0x86, 0x41, 0x11, 0x67, 0x00,
-	0xdf, 0x24, 0xa1, 0x80, 0x52, 0x45, 0x5e, 0x21, 0x1d, 0xab, 0x28, 0xfc, 0x39, 0x24, 0x73, 0xf2,
-	0x9d, 0xc2, 0x48, 0x6d, 0x46, 0x4b, 0xa5, 0x8a, 0x30, 0xdc, 0x0f, 0xf9, 0x0f, 0x9c, 0x7e, 0x05,
-	0x00, 0x00, 0xff, 0xff, 0xb5, 0xbd, 0xf5, 0x38, 0x20, 0x02, 0x00, 0x00,
+var fileDescriptor_wxAuth_a61194b47964af0e = []byte{
+	// 1333 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x58, 0x4b, 0x6f, 0x1c, 0x45,
+	0x10, 0xd6, 0xec, 0x7a, 0xed, 0xb8, 0x9c, 0xd8, 0x71, 0xfb, 0x35, 0x9e, 0x98, 0xc8, 0x0c, 0x01,
+	0x45, 0x08, 0x35, 0x4a, 0x78, 0x23, 0x11, 0xd8, 0x6c, 0xc4, 0x62, 0x94, 0x87, 0x35, 0x6b, 0x87,
+	0x13, 0x87, 0xf6, 0x6c, 0xef, 0xba, 0xb5, 0xde, 0x99, 0x49, 0xf7, 0xac, 0x1d, 0xe7, 0x07, 0x70,
+	0xe1, 0x06, 0x57, 0x2e, 0x9c, 0x38, 0x70, 0x20, 0x42, 0xfc, 0x25, 0x7e, 0x44, 0x6e, 0xa8, 0x1f,
+	0xb3, 0xf3, 0xd8, 0x99, 0x65, 0x17, 0x09, 0x89, 0x03, 0x27, 0x6f, 0x7d, 0x55, 0xd3, 0xf5, 0x75,
+	0x75, 0x55, 0x75, 0x97, 0x61, 0x37, 0xe2, 0x61, 0x1c, 0xbe, 0x7b, 0xf1, 0xbc, 0x39, 0x8a, 0x4f,
+	0xcd, 0x1f, 0xac, 0x30, 0xf7, 0x67, 0x0b, 0x76, 0xbe, 0x51, 0xc0, 0x11, 0xf3, 0x07, 0x34, 0xee,
+	0x90, 0x73, 0xea, 0xd1, 0x67, 0x23, 0x2a, 0x62, 0xb4, 0x09, 0x0d, 0x12, 0x45, 0x07, 0x0f, 0x6c,
+	0x6b, 0xdf, 0xba, 0xbd, 0xec, 0x69, 0x01, 0xdd, 0x04, 0xf0, 0x39, 0x25, 0x31, 0x3d, 0x62, 0x43,
+	0x6a, 0xd7, 0xf6, 0xad, 0xdb, 0x75, 0x2f, 0x83, 0x20, 0x07, 0xae, 0xb0, 0xa0, 0x17, 0x1e, 0x5d,
+	0x46, 0xd4, 0xae, 0xab, 0x0f, 0xc7, 0x32, 0x7a, 0x1f, 0xb6, 0xfc, 0x70, 0x18, 0x85, 0x01, 0x0d,
+	0xe2, 0xa7, 0x94, 0xb3, 0xde, 0xa5, 0xf6, 0x6a, 0x2f, 0x28, 0xc3, 0x72, 0xa5, 0xfb, 0x15, 0xd8,
+	0x93, 0x14, 0x45, 0x14, 0x06, 0x82, 0x22, 0x04, 0x0b, 0x7e, 0xd8, 0xa5, 0x8a, 0x62, 0xc3, 0x53,
+	0xbf, 0x91, 0x0d, 0x4b, 0x43, 0x2a, 0x04, 0xe9, 0x6b, 0x7a, 0xcb, 0x5e, 0x22, 0xba, 0x4f, 0xf2,
+	0x9b, 0x6d, 0xd3, 0x78, 0xbc, 0x50, 0x25, 0x35, 0x6b, 0x1a, 0xb5, 0x5f, 0x2d, 0xb8, 0xd1, 0x4a,
+	0x34, 0x4d, 0xdf, 0xa7, 0x42, 0x1c, 0x85, 0x03, 0x1a, 0x24, 0x21, 0x7c, 0x0b, 0x56, 0xc7, 0x1f,
+	0x36, 0xa3, 0x88, 0x75, 0xcd, 0x72, 0x05, 0x14, 0x61, 0x40, 0x59, 0x44, 0x50, 0x9f, 0xd3, 0xd8,
+	0xb0, 0x2f, 0xd1, 0x54, 0xb3, 0xad, 0x4f, 0x63, 0x1b, 0xc1, 0x5e, 0x39, 0x59, 0x13, 0x83, 0xbb,
+	0xb0, 0xe9, 0x97, 0xe8, 0x0d, 0xe7, 0x52, 0x1d, 0xda, 0x83, 0x65, 0xfa, 0x3c, 0x62, 0x9c, 0x8a,
+	0x83, 0x40, 0x11, 0x6e, 0x78, 0x29, 0xe0, 0x7e, 0x0e, 0x5b, 0xad, 0xdc, 0x4e, 0xe7, 0x0c, 0x8c,
+	0x7b, 0x0c, 0x1b, 0x87, 0x9c, 0xca, 0x23, 0x6b, 0x85, 0xdd, 0xf4, 0xd8, 0xf7, 0x61, 0x25, 0x4a,
+	0x61, 0xf3, 0x6d, 0x16, 0xfa, 0x1b, 0x5e, 0x11, 0xd8, 0xd2, 0x32, 0xe4, 0xec, 0x05, 0x89, 0x59,
+	0x18, 0x1c, 0x04, 0xbd, 0x70, 0xde, 0x33, 0x7b, 0x07, 0xd6, 0x49, 0x76, 0x0d, 0xc5, 0x44, 0x1f,
+	0xd9, 0xa4, 0xc2, 0xfd, 0x16, 0x76, 0x4b, 0x3c, 0x9a, 0xed, 0x7c, 0x51, 0x58, 0x4a, 0x2a, 0x95,
+	0xd7, 0x95, 0xbb, 0x08, 0x4f, 0x7e, 0x36, 0x69, 0xec, 0xbe, 0xb2, 0x60, 0x7d, 0xc2, 0x10, 0xdd,
+	0x86, 0xb5, 0xc4, 0x94, 0xf2, 0xec, 0x5e, 0x8a, 0xb0, 0x4c, 0xa8, 0x0c, 0x94, 0x39, 0x7b, 0xbd,
+	0xa1, 0x72, 0x65, 0x3e, 0xc8, 0xf5, 0x42, 0x90, 0xd1, 0x87, 0xb0, 0x9d, 0x7e, 0xe6, 0xd1, 0x1e,
+	0xa7, 0xe2, 0x54, 0x2f, 0xaa, 0xcb, 0xbd, 0x42, 0x8b, 0x30, 0x5c, 0xe9, 0x8d, 0x02, 0x5f, 0x05,
+	0xa1, 0xb1, 0x5f, 0x57, 0x41, 0xf8, 0x72, 0x14, 0xf8, 0xc2, 0x0f, 0x23, 0xda, 0x22, 0x31, 0xed,
+	0x87, 0xfc, 0xd2, 0x1b, 0xdb, 0xb8, 0x1d, 0x58, 0x9f, 0x50, 0xa3, 0x7b, 0xb0, 0xde, 0x2b, 0x82,
+	0x26, 0xa4, 0xd7, 0x71, 0x87, 0xf2, 0x73, 0xe6, 0x53, 0xd9, 0x93, 0x74, 0x40, 0x27, 0x4c, 0xdd,
+	0xdf, 0x2c, 0x78, 0xc3, 0xb0, 0x6a, 0x96, 0xed, 0x7d, 0xde, 0x6c, 0x29, 0x39, 0x8a, 0x5a, 0xf9,
+	0x51, 0x54, 0x87, 0xad, 0x3e, 0x2d, 0x6c, 0xee, 0xef, 0x16, 0xdc, 0x9a, 0xce, 0x38, 0x6d, 0x75,
+	0xe5, 0x67, 0x6d, 0xcd, 0x7c, 0xd6, 0xb5, 0xd9, 0xcf, 0x7a, 0x3a, 0x69, 0x06, 0x5b, 0x29, 0xd9,
+	0x7f, 0x52, 0x85, 0x33, 0xc7, 0xd5, 0xfd, 0xd1, 0x82, 0xed, 0xa2, 0x2f, 0x13, 0x91, 0x8f, 0x60,
+	0x95, 0xe4, 0x34, 0x26, 0x53, 0xd6, 0x70, 0xe1, 0x83, 0x82, 0x59, 0x79, 0xe1, 0xd6, 0xe6, 0x29,
+	0xdc, 0x3f, 0x6b, 0xb0, 0x9a, 0x77, 0x22, 0x6f, 0xd0, 0x80, 0xf9, 0x83, 0xc7, 0x64, 0x98, 0x74,
+	0xb6, 0xb1, 0x2c, 0xef, 0xb6, 0x53, 0x4a, 0xba, 0x07, 0xc3, 0x7e, 0x72, 0xb7, 0x19, 0x11, 0x7d,
+	0x0a, 0x6b, 0x22, 0x9f, 0xd6, 0x2a, 0xf4, 0x65, 0xe9, 0x5e, 0x34, 0x44, 0x1f, 0xc3, 0xea, 0xb9,
+	0xbe, 0x28, 0x92, 0x4f, 0x17, 0x2a, 0x3e, 0x2d, 0xd8, 0x49, 0xae, 0x23, 0x41, 0xb9, 0xe2, 0xda,
+	0xd0, 0x5c, 0x13, 0x19, 0xdd, 0x82, 0x6b, 0x11, 0x67, 0x81, 0xcf, 0x22, 0x72, 0xa6, 0x0c, 0x16,
+	0x95, 0x41, 0x1e, 0x44, 0x77, 0xe0, 0xea, 0xc9, 0x48, 0xb0, 0x80, 0x0a, 0xa1, 0x3c, 0x2f, 0x29,
+	0xcf, 0xd7, 0xf0, 0xfd, 0x0c, 0xe8, 0xe5, 0x4c, 0xd4, 0xc3, 0xe4, 0x8c, 0x11, 0x61, 0x5f, 0x31,
+	0x0f, 0x13, 0x29, 0xc8, 0x04, 0x7d, 0xc6, 0xe5, 0x03, 0xe0, 0x98, 0x9f, 0xd9, 0xcb, 0x4a, 0x93,
+	0x02, 0xee, 0xcb, 0x3a, 0x6c, 0x3d, 0x62, 0x01, 0x6b, 0x46, 0xd1, 0xff, 0xe1, 0x9e, 0x2f, 0xdc,
+	0x53, 0x03, 0x2b, 0xb5, 0x82, 0xf5, 0x03, 0x12, 0x8f, 0x38, 0xb5, 0x41, 0x6b, 0xc7, 0x80, 0x0c,
+	0xd3, 0x90, 0x05, 0xec, 0x90, 0x87, 0x7d, 0x4e, 0x86, 0xca, 0xe3, 0x8a, 0xd9, 0xeb, 0xa3, 0x3c,
+	0xee, 0x15, 0x0d, 0xdd, 0x1f, 0x2c, 0x58, 0x2b, 0x18, 0xa1, 0x3b, 0xb0, 0x14, 0xd0, 0xf8, 0x22,
+	0xe4, 0x03, 0x53, 0xa2, 0x3b, 0xc5, 0x75, 0x1e, 0x6b, 0xb5, 0x97, 0xd8, 0xa1, 0xb7, 0x01, 0x7c,
+	0xdd, 0xd5, 0x19, 0x15, 0x76, 0x4d, 0x5d, 0x28, 0x80, 0x5b, 0x09, 0xe4, 0x65, 0xb4, 0xf2, 0x5d,
+	0x71, 0xce, 0x04, 0x8b, 0x3b, 0x31, 0x89, 0x47, 0xc2, 0x5c, 0x69, 0x59, 0xc8, 0xfd, 0xc3, 0x82,
+	0xed, 0x72, 0x8f, 0xf2, 0x00, 0xb8, 0xee, 0x5e, 0x0f, 0xc2, 0x21, 0x61, 0xb2, 0x9f, 0xd6, 0xe5,
+	0x01, 0xe4, 0x40, 0xd9, 0xb0, 0x2e, 0x84, 0x97, 0xb3, 0xab, 0x29, 0xbb, 0x22, 0x8c, 0x5c, 0xb8,
+	0x3a, 0x8a, 0xce, 0x42, 0xd2, 0x35, 0x66, 0x75, 0x65, 0x96, 0xc3, 0x64, 0x9b, 0xec, 0x86, 0x17,
+	0x41, 0xc6, 0x6a, 0x41, 0x59, 0x15, 0x50, 0xf7, 0x13, 0x58, 0x1e, 0xef, 0x58, 0xd6, 0x4f, 0x8f,
+	0x71, 0x91, 0xbc, 0x6d, 0xb5, 0x80, 0xb6, 0x61, 0x51, 0x50, 0x3f, 0x0c, 0x92, 0x06, 0x6a, 0x24,
+	0xf7, 0x75, 0x58, 0x2b, 0xa4, 0x25, 0x5a, 0x85, 0x9a, 0x69, 0xc8, 0x0d, 0xaf, 0xc6, 0xba, 0xee,
+	0x4f, 0x16, 0x5c, 0xbd, 0x5f, 0x48, 0x99, 0x30, 0xa2, 0x41, 0x27, 0x0e, 0x79, 0xf2, 0x36, 0x4f,
+	0x01, 0x99, 0xc5, 0x4a, 0xf0, 0x49, 0x72, 0x93, 0x8c, 0x65, 0x59, 0x71, 0xf2, 0xf7, 0x21, 0xb9,
+	0x34, 0xd1, 0x4f, 0xc4, 0xe4, 0xab, 0x16, 0xe1, 0x5d, 0x55, 0x2f, 0xe6, 0x2b, 0x29, 0x8f, 0xfd,
+	0x9d, 0x92, 0x81, 0x2e, 0x8c, 0xc4, 0x9f, 0x04, 0xdc, 0xef, 0x2d, 0xd8, 0x49, 0x8b, 0xfe, 0x49,
+	0x24, 0x9b, 0xef, 0xbf, 0x77, 0x7f, 0xdf, 0x04, 0x08, 0x95, 0x0b, 0x55, 0x84, 0xfa, 0xfa, 0xcb,
+	0x20, 0xee, 0x77, 0x56, 0xfa, 0xf8, 0x4c, 0xd9, 0x98, 0x9b, 0x68, 0xf6, 0x17, 0x5b, 0xde, 0x4d,
+	0xad, 0xe8, 0x46, 0xa6, 0xb2, 0x96, 0x9e, 0x92, 0xb3, 0x51, 0xc2, 0x23, 0x0b, 0xb9, 0x2f, 0x2d,
+	0x70, 0x3a, 0x34, 0xfe, 0xcf, 0x44, 0xa6, 0x48, 0x79, 0x61, 0x92, 0xf2, 0x13, 0xb8, 0x51, 0xca,
+	0xd8, 0x44, 0xcf, 0x86, 0x25, 0xca, 0x79, 0x66, 0x20, 0x4c, 0x44, 0x99, 0xdc, 0x94, 0xf3, 0xa1,
+	0x48, 0xfa, 0xb8, 0x91, 0xdc, 0x5f, 0x2c, 0x58, 0x6f, 0xeb, 0x15, 0x8f, 0xbd, 0x87, 0xf3, 0x6e,
+	0x7d, 0x1f, 0x56, 0x38, 0xed, 0x32, 0x4e, 0xfd, 0xf8, 0xd8, 0x7b, 0x68, 0x96, 0xce, 0x42, 0xe8,
+	0x3a, 0xd4, 0x63, 0xd2, 0x57, 0x7b, 0xad, 0x7b, 0xf2, 0xa7, 0x4c, 0x63, 0x35, 0x81, 0xca, 0xf9,
+	0x58, 0xef, 0x70, 0x2c, 0x4b, 0xdd, 0x09, 0x7b, 0xa1, 0x3d, 0x9a, 0xf6, 0x9e, 0xc8, 0x2e, 0x06,
+	0x94, 0x25, 0x9a, 0xee, 0x98, 0x68, 0xc8, 0x50, 0x4c, 0xc4, 0xbb, 0xaf, 0x1a, 0xb0, 0xa8, 0x87,
+	0x5d, 0xd4, 0x04, 0x90, 0x43, 0xb3, 0x9e, 0x02, 0x91, 0x8d, 0x2b, 0x06, 0x7e, 0x67, 0x17, 0x57,
+	0xce, 0xd9, 0x9f, 0xc1, 0x72, 0x9b, 0xc6, 0x66, 0x85, 0x6d, 0x5c, 0x3a, 0xd4, 0x39, 0xf9, 0x95,
+	0xb3, 0xd3, 0xf5, 0x53, 0xd8, 0x69, 0xd3, 0xb8, 0x55, 0x3a, 0x40, 0xe2, 0x29, 0x03, 0xb4, 0xf3,
+	0x1a, 0x9e, 0x3a, 0xb1, 0xde, 0x83, 0xd5, 0x36, 0x8d, 0x33, 0x13, 0x62, 0x25, 0xb7, 0x4d, 0x5c,
+	0x36, 0x47, 0x3e, 0x82, 0xcd, 0x76, 0x9a, 0x4f, 0xe9, 0xe0, 0xb4, 0x8b, 0xab, 0xc6, 0x43, 0xc7,
+	0xc1, 0xd5, 0x73, 0xdc, 0x00, 0xf6, 0xa6, 0xbd, 0xc0, 0xd1, 0x2d, 0x3c, 0xc3, 0x48, 0xe1, 0xbc,
+	0x89, 0x67, 0x7a, 0xc6, 0x3f, 0x18, 0x67, 0x6e, 0xe6, 0x31, 0xb3, 0x8d, 0x4b, 0x9f, 0xd3, 0xce,
+	0x0e, 0xae, 0x78, 0xfa, 0x7e, 0x0d, 0x1b, 0xed, 0xc9, 0x8a, 0x42, 0x36, 0xae, 0x68, 0x0b, 0xce,
+	0x2e, 0xae, 0x2c, 0xbf, 0x43, 0xd8, 0x28, 0xa9, 0x4e, 0x74, 0x03, 0x57, 0x77, 0x19, 0x67, 0x0f,
+	0x4f, 0x2b, 0xe8, 0x0f, 0x00, 0xd2, 0xa4, 0x47, 0x08, 0x4f, 0x94, 0xaa, 0xb3, 0x81, 0x27, 0xab,
+	0xe2, 0x64, 0x51, 0xfd, 0x73, 0xeb, 0xbd, 0xbf, 0x02, 0x00, 0x00, 0xff, 0xff, 0x81, 0x21, 0xde,
+	0x78, 0xf9, 0x12, 0x00, 0x00,
 }

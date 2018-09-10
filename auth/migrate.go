@@ -8,4 +8,7 @@ import (
 //Migrate migrate
 func Migrate(db *gorm.DB) {
 	db.AutoMigrate(&models.WXTicket{})
+	db.AutoMigrate(&models.WXComponentAccessToken{})
+	db.AutoMigrate(&models.WXPreAuthCode{})
+
 }

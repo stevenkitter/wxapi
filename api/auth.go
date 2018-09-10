@@ -7,9 +7,11 @@ import (
 	"errors"
 	"log"
 
+	"github.com/asaskevich/govalidator"
 	"github.com/gin-gonic/gin"
-	"github.com/stevenkitter/wxapi/api/wx"
 	wxauth "github.com/stevenkitter/wxapi/proto/wxAuth"
+	"github.com/stevenkitter/wxapi/response"
+	"github.com/stevenkitter/wxapi/wx"
 )
 
 //AuthWX AuthWX
@@ -46,14 +48,17 @@ func (auth *AuthWX) Receive(c *gin.Context) {
 //GetTicket GetTicket
 func (auth *AuthWX) GetTicket(c *gin.Context) {
 	appID := c.Param("appId")
-	res, err := cl.GetTicket(context.TODO(), &wxauth.WxAuthTicketGetRequest{
-		AppID: appID,
+	res, err := cl.GetTicket(context.TODO(), &wxauth.ComponentAppidRequest{
+		ComponentAppid: appID,
 	})
 	if err != nil {
-		c.JSON(400, err)
+		c.JSON(400, response.ResFAIL(err.Error()))
 		return
 	}
-	c.JSON(200, res)
+	c.JSON(200, response.Response{
+		Code: 200,
+		Data: res.ComponentVerifyTicket,
+	})
 }
 
 //WXInComeHandler WXInComeHandler
@@ -83,4 +88,40 @@ func WXInComeHandler(c *gin.Context) ([]byte, error) {
 	return res, nil
 	//获取需要的数据
 
+}
+
+//GetAuthURLJSON json
+type GetAuthURLJSON struct {
+	RedirectURL string `json:"redirectURL" binding:"required"`
+	AuthType    string `json:"authType"`
+	BizAppid    string `json:"bizAppid"`
+	Tag         int64  `json:"tag"`
+}
+
+//GetAuthURL auth url
+func (auth *AuthWX) GetAuthURL(c *gin.Context) {
+	var json GetAuthURLJSON
+	if err := c.ShouldBindJSON(&json); err != nil {
+		c.JSON(400, response.ResFAIL(err.Error()))
+		return
+	}
+	if !govalidator.IsNull(json.BizAppid) && !govalidator.IsNull(json.BizAppid) {
+		c.JSON(400, response.ResFAIL("bizAppid and authType 互斥"))
+		return
+	}
+	res, err := cl.GetAuthURL(context.TODO(), &wxauth.GetAuthURLRequest{
+		ComponentAppid: wx.AppID,
+		RedirectURL:    json.RedirectURL,
+		Tag:            json.Tag,
+		AuthType:       json.AuthType,
+		BizAppid:       json.BizAppid,
+	})
+	if err != nil {
+		c.JSON(400, response.ResFAIL(err.Error()))
+		return
+	}
+	c.JSON(200, response.Response{
+		Code: 200,
+		Data: res.AuthURL,
+	})
 }

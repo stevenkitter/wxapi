@@ -19,10 +19,11 @@ func main() {
 	cl = wxauth.NewWxAuthService("wx.srv.auth", service.Client())
 
 	wxau := new(AuthWX)
-	gin.SetMode(gin.ReleaseMode)
+	gin.SetMode(gin.DebugMode)
 	router := gin.Default()
 	router.POST("/wx", wxau.Receive)
-	router.GET("/ticket/:appId", wxau.GetTicket)
+	router.POST("/webAuthURL", wxau.GetAuthURL)
+
 	// Register Handler
 	if err := router.Run(":8080"); err != nil {
 		log.Println(err)
