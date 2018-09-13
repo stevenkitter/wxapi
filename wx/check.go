@@ -3,6 +3,7 @@ package wx
 import (
 	"crypto/sha1"
 	"fmt"
+	"os"
 	"sort"
 	"strings"
 )
@@ -12,10 +13,13 @@ const (
 	Token = "K81ec6fF37"
 	//AppID appid
 	AppID = "wxdd9779d0ca45ea77"
-	//AppSecrect appsecrect
-	AppSecrect = "5b1b1e0acefb09d43748920afd38cf79"
 	//EncodingAESKey encodingaeskey
 	EncodingAESKey = "7WfXuJfsGHYqt5eSPH8Gg7B9Y115vU8dx4Z48rZbzH1"
+)
+
+var (
+	//AppSecrect wx app secrect
+	AppSecrect = os.Getenv("WXAppSecrect")
 )
 
 //CheckSignature 验证签名
